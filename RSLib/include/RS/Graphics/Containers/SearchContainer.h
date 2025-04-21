@@ -10,7 +10,6 @@
 #include "IFilterable.h"
 
 class SearchContainer : public Container {
-private:
     std::string searchTerm;
 
 public:

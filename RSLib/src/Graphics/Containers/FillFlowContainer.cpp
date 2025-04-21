@@ -22,6 +22,8 @@ void FillFlowContainer::update(Time deltaTime) {
 }
 
 void FillFlowContainer::updateLayout() {
+    if (direction == Direction::None) throw std::runtime_error("direction can't be None, please set a direction with setDirection()");
+
     Vector2 cursor = {0, 0};
     Vector2 containerSize = getSize();
 

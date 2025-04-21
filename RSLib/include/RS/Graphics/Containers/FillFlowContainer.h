@@ -8,7 +8,8 @@
 
 enum class Direction {
     Horizontal,
-    Vertical
+    Vertical,
+    None
 };
 
 
@@ -25,7 +26,7 @@ public:
     void update(Time deltaTime) override;
 
 private:
-    Direction direction = Direction::Vertical;
+    Direction direction = Direction::None;
     float spacing = 0.0f;
 };
 
