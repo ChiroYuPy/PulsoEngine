@@ -70,8 +70,8 @@ protected:
     Vector2 size; // {0.0f -> inf, 0.0f -> inf}
     Axes relativeSizeAxes = Axes::None;
 
-    Anchor origin; // {0.0f -> 1.0f, 0.0f -> 1.0f}
-    Anchor anchor; // {0.0f -> 1.0f, 0.0f -> 1.0f}
+    Anchor origin = Anchor::None; // {0.0f -> 1.0f, 0.0f -> 1.0f}
+    Anchor anchor = Anchor::None; // {0.0f -> 1.0f, 0.0f -> 1.0f}
 
     DrawInfo drawInfo; // calculated parameter to draw a shape
     Drawable* parent = nullptr; // parent container, optional

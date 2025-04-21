@@ -29,8 +29,8 @@ void GameBase::mainLoop() {
         onFrameStart();
 
         ctx.renderer->pollEvents(&ctx);
-        ctx.screenStack->getTop()->onUpdate(deltaTime);
-        ctx.screenStack->getTop()->onRender();
+        ctx.screenStack->onUpdate(deltaTime);
+        ctx.screenStack->onRender();
         ctx.renderer->display();
 
         onFrameEnd();

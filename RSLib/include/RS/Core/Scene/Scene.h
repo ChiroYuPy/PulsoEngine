@@ -24,6 +24,8 @@ public:
     virtual void onUpdate(Time deltaTime) = 0;
     virtual void onEvent(const Event& event) = 0;
 
+    std::unique_ptr<Container> root;
+
 protected:
     GameContext* ctx = nullptr;
 };

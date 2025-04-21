@@ -8,11 +8,12 @@
 #include "Vector2.h"
 
 enum class Anchor {
+    None, // if you want to place it with only relative position ( from up left corner )
     TopLeft, TopCentre, TopRight,
     CentreLeft, Center, CentreRight,
     BottomLeft, BottomCentre, BottomRight
 };
 
-Vector2 toVector2(Anchor anchor);
+Vector2 toVector2(Anchor &anchor);
 
 #endif //WMG_ANCHOR_H

@@ -7,8 +7,6 @@
 #include "Graphics/GridTest.h"
 
 GameScreen::GameScreen(GameContext* context) : Scene(context) {
-    root = std::make_unique<Container>();
-    root->setSize(ctx->renderer->getWindowSize());
 }
 
 void GameScreen::onEnter() {
@@ -27,21 +25,15 @@ void GameScreen::onEnter() {
     // box->setPosition({100, 100});
     // box->setColor(0xFF00FFFF);
     // root->addChild(std::move(box));
-
-    root->setRenderer(ctx->renderer);
 }
 
 void GameScreen::onExit() {
-    root->clear();
 }
 
 void GameScreen::onUpdate(Time deltaTime) {
-    root->update(deltaTime);
 }
 
 void GameScreen::onRender() {
-    ctx->renderer->clear();
-    root->draw();
 }
 
 void GameScreen::onEvent(const Event &event) {

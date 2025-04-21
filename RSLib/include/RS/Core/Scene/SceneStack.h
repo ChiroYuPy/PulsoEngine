@@ -18,10 +18,14 @@ public:
     void push(std::unique_ptr<Scene> scene);
     void pop();
     Scene* getTop();
-    bool isEmpty();
+    bool isEmpty() const;
     void clear();
 
     void quit();
+
+    void onUpdate(Time time);
+
+    void onRender();
 
 private:
     std::stack<std::unique_ptr<Scene>> scenes;

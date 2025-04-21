@@ -16,7 +16,7 @@ public:
     ~Game() override = default;
 
 protected:
-    void onInit() override {};
+    void onInit() override {}
     void onFrameStart() override {}
     void onFrameEnd() override {}
     void onCleanup() override {}

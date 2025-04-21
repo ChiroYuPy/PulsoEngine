@@ -16,6 +16,6 @@ static const Vector2 anchorOffsets[] = {
         {1.0f, 1.0f}    // BottomRight
 };
 
-Vector2 toVector2(Anchor anchor) {
+Vector2 toVector2(Anchor &anchor) {
     return anchorOffsets[static_cast<int>(anchor)];
 }

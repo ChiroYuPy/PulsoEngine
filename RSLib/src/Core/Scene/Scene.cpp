@@ -7,4 +7,6 @@
 
 Scene::Scene(GameContext *context) {
     ctx = context;
+    root = std::make_unique<Container>();
+    root->setSize(ctx->renderer->getWindowSize());
 }

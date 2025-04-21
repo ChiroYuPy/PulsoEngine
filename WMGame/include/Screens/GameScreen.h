@@ -23,9 +23,6 @@ public:
     void onRender() override;
 
     void onEvent(const Event& event) override;
-
-private:
-    std::shared_ptr<Container> root;
 };
 
 

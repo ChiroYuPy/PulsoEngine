@@ -27,7 +27,6 @@ public:
     void onEvent(const Event& event) override;
 
 private:
-    std::shared_ptr<Container> root;
     std::unique_ptr<Music> music;
     std::unique_ptr<Sound> sound;
 };
