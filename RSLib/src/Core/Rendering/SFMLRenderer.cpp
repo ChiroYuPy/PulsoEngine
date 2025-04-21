@@ -3,7 +3,6 @@
 //
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "RS/Core/Rendering/SFMLRenderer.h"
 #include "RS/Core/GameBase.h"
 #include "RS/Graphics/DrawInfo.h"
@@ -20,22 +19,23 @@ void SFMLRenderer::clear(unsigned int color) {
     window.clear(sf::Color(color));
 }
 
-void SFMLRenderer::drawRect(DrawInfo& transform, float width, float height, unsigned int color) {
-    sf::RectangleShape rect({width, height});
+void SFMLRenderer::drawRect(DrawInfo& transform, const float width, const float height, const unsigned int color) {
+    const Vector2 position = transform.getPosition();
+    const Vector2 size = transform.getSize();
 
-    Vector2 position = transform.getPosition();
+    sf::RectangleShape rect({size.x, size.y});
 
     rect.setPosition(position.x, position.y);
-    rect.setOrigin({width / 2.0f, height / 2.0f});
+    rect.setOrigin({size.x / 2.0f, size.y / 2.0f});
     rect.setFillColor(sf::Color(color));
 
     window.draw(rect);
 }
 
-void SFMLRenderer::drawCircle(DrawInfo& transform, float radius, unsigned int color) {
+void SFMLRenderer::drawCircle(DrawInfo& transform, float radius, const unsigned int color) {
     sf::CircleShape circle(radius);
 
-    Vector2 position = transform.getPosition();
+    const Vector2 position = transform.getPosition();
 
     circle.setPosition(position.x, position.y);
     circle.setOrigin({radius, radius});

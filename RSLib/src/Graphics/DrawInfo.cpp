@@ -10,8 +10,16 @@ void DrawInfo::setPosition(Vector2 newPosition) {
     position = newPosition;
 }
 
-const Vector2& DrawInfo::getPosition() const {
+const Vector2 &DrawInfo::getPosition() const {
     return position;
+}
+
+void DrawInfo::setSize(Vector2 newSize) {
+    size = newSize;
+}
+
+const Vector2 &DrawInfo::getSize() const {
+    return size;
 }
 
 const BoundingBox &DrawInfo::getBoundingBox() const {

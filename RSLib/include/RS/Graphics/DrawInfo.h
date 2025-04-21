@@ -16,12 +16,16 @@ public:
     void setPosition(Vector2 newPosition);
     [[nodiscard]] const Vector2& getPosition() const;
 
+    void setSize(Vector2 vector2);
+    [[nodiscard]] const Vector2& getSize() const;
+
     [[nodiscard]] const BoundingBox &getBoundingBox() const;
 
     DrawInfo operator+(const DrawInfo& other) const;
 
 private:
     Vector2 position;
+    Vector2 size;
 
     BoundingBox boundingBox;
 };

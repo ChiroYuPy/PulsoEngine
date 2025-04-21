@@ -4,11 +4,9 @@
 
 #include "RS/Graphics/Drawable.h"
 
-#include <iostream>
-
 int Drawable::totalCount = 0;
 
-Drawable::Drawable() : relativePosition(0, 0), anchor(Anchor::Center), origin(Anchor::Center), size(1, 1), parent(nullptr), drawInfo() {
+Drawable::Drawable() : relativePosition(0, 0), size(1, 1), origin(Anchor::Center), anchor(Anchor::Center) {
     drawInfo = DrawInfo();
     totalCount++;
     // std::cout << "Drawable created (total: " << totalCount << ")" << std::endl;
@@ -41,11 +39,12 @@ void Drawable::updateTransform() {
     relativeTransform.setPosition(relativePosition);
 
     if (parent) {
-        Vector2 parentSize = parent->getSize();
-        if (hasX(relativeSizeAxes)) size.x = parentSize.x;
-        if (hasY(relativeSizeAxes)) size.y = parentSize.y;
-
+        const Vector2 parentSize = parent->getSize();
+        Vector2 drawSize = size;
+        if (hasX(relativeSizeAxes)) drawSize.x = parentSize.x * size.x;
+        if (hasY(relativeSizeAxes)) drawSize.y = parentSize.y * size.y;
         drawInfo = relativeTransform + parent->getDrawInfo();
+        drawInfo.setSize(drawSize);
     }
     else drawInfo = relativeTransform;
 }
@@ -74,7 +73,7 @@ Drawable* Drawable::getParent() const {
     return parent;
 }
 
-const DrawInfo& Drawable::getDrawInfo() {
+const DrawInfo& Drawable::getDrawInfo() const {
     return drawInfo;
 }
 
@@ -96,5 +95,10 @@ const Axes &Drawable::getRelativeSizeAxes() const {
 
 void Drawable::moveTo(const Vector2 &target, Time duration, const std::function<float(float)> &easingFunc) noexcept {
     auto animation = std::make_unique<AnimationTransform<Vector2>>(&relativePosition, relativePosition, target, duration, easingFunc);
+    addAnimation(std::move(animation));
+}
+
+void Drawable::sizeTo(const Vector2 &target, Time duration, const std::function<float(float)> &easingFunc) noexcept {
+    auto animation = std::make_unique<AnimationTransform<Vector2>>(&size, size, target, duration, easingFunc);
     addAnimation(std::move(animation));
 }

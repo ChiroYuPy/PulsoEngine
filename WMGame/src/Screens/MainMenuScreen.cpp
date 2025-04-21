@@ -23,14 +23,14 @@ void MainMenuScreen::onEnter() {
     auto circle1 = std::make_unique<Circle>(64);
     circle1->setPosition({100, 300});
     circle1->setColor(0xFF00AAFF);
-    circle1->setAnchor(Anchor::None);
-    // root->scaleTo({1, 0.1}, Time::millis(1500), Easing::EaseInQuad);
-    circle1->moveTo({700, 300}, Time::millis(3000), Easing::EaseInOutQuad);
-    // circle1->scaleTo({0.25f, 4.0f}, Time::millis(3000), Easing::EaseInOutQuad);
+    circle1->setAnchor(Anchor::Center);
+    // circle1->moveTo({700, 300}, Time::millis(3000), Easing::EaseInOutQuad);
 
     root->addChild(std::move(circle1));
 
     auto button = std::make_unique<BeatmapButton>();
+    button->setAnchor(Anchor::Center);
+
     root->addChild(std::move(button));
 
     // music->start();

@@ -58,10 +58,12 @@ public:
 
     void moveTo(const Vector2& target, Time duration, const std::function<float(float)>& easingFunc) noexcept;
 
+    void sizeTo(const Vector2 &target, Time duration, const std::function<float(float)> &easingFunc) noexcept;
+
     void setParent(Drawable* p);
     [[nodiscard]] Drawable* getParent() const;
 
-    const DrawInfo& getDrawInfo();
+    const DrawInfo& getDrawInfo() const;
 
 protected:
     Vector2 relativePosition; // {float, float}

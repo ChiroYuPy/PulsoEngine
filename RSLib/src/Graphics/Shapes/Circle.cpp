@@ -4,7 +4,7 @@
 
 #include "RS/Graphics/Shapes/Circle.h"
 
-Circle::Circle(float radius) : radius(radius) {
+Circle::Circle(const float radius) : radius(radius) {
     size = {radius * 2.f, radius * 2.f};
 }
 

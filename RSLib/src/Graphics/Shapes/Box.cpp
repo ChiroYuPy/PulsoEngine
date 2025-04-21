@@ -5,7 +5,7 @@
 #include "RS/Graphics/Shapes/Box.h"
 
 Box::Box() {
-    size = {32, 32};
+    size = {1.f, 1.f};
 }
 
 void Box::setSize(const Vector2 &newSize) {
