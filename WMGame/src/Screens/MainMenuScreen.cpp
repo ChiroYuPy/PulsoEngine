@@ -11,14 +11,14 @@ MainMenuScreen::MainMenuScreen(GameContext* context) : Scene(context) {
     root = std::make_unique<Container>();
     root->setSize(ctx->renderer->getWindowSize());
 
-    music = std::make_unique<Music>(R"(C:\Users\ChiroYuki\CLionProjects\WMG\WMGame\ressources\audio.mp3)");
+    music = std::make_unique<Music>("../WMGame/ressources/audio.mp3");
     std::cout << music->getCurrentTimeSeconds() << "/" << music->getLength() << std::endl;
     music->setLooping(false);
     music->seek(60.f);
     music->setVolume(1.f);
     music->setPitch(1.f);
 
-    sound = std::make_unique<Sound>(R"(C:\Users\ChiroYuki\CLionProjects\WMG\WMGame\ressources\ui-pop-up-243471.mp3)");
+    sound = std::make_unique<Sound>("../WMGame/ressources/ui-pop-up-243471.mp3");
     sound->setVolume(1.f);
 }
 
