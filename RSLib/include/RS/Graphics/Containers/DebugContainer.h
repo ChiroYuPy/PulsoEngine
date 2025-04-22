@@ -10,14 +10,16 @@
 
 
 class DebugContainer : public Container {
-    std::string searchTerm;
-
 public:
-    void updateLayout() override;
+    DebugContainer();
 
-    void setSearchTerm(const std::string& term);
+    void draw() override;
 
-    void applyFilter();
+    void setColor(unsigned int newColor);
+    [[nodiscard]] unsigned int getColor() const;
+
+protected:
+    unsigned int color;
 };
 
 

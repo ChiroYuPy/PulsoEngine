@@ -17,7 +17,7 @@ public:
 
     void setSearchTerm(const std::string& term);
 
-    void applyFilter();
+    void applyFilter() const;
 };
 
 

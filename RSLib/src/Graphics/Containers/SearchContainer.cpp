@@ -9,10 +9,9 @@ void SearchContainer::setSearchTerm(const std::string &term) {
     applyFilter();
 }
 
-void SearchContainer::applyFilter() {
+void SearchContainer::applyFilter() const {
     for (const auto& child : children) {
-        auto* filterable = dynamic_cast<IFilterable*>(child.get());
-        if (filterable) {
+        if (auto* filterable = dynamic_cast<IFilterable*>(child.get())) {
             bool match = false;
             for (const auto& keyword : filterable->getFilterTerms()) {
                 if (keyword.find(searchTerm) != std::string::npos) {
