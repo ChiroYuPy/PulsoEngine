@@ -7,11 +7,13 @@
 DebugContainer::DebugContainer() : color(0xBBBBBBFF) {}
 
 void DebugContainer::draw() {
-  if (renderer) renderer->drawRect(drawInfo, size.x, size.y, color);
+  Vector2 drawPos = absolutePosition - Vector2(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
+  if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color);
+  if (renderer) renderer->drawCircle(absolutePosition, 2, 0xFFFFFFFF);
   Container::draw();
 }
 
-void DebugContainer::setColor(unsigned int newColor) {
+void DebugContainer::setColor(const unsigned int newColor) {
   color = newColor;
 }
 

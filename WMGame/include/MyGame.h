@@ -9,6 +9,8 @@
 #include <RS/Core.h>
 
 #include "Screens/MainMenuScreen.h"
+#include "Screens/TestScreen.h"
+
 
 class MyGame : public Game {
 protected:

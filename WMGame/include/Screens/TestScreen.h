@@ -1,21 +1,18 @@
 //
-// Created by ChiroYuki on 09/04/2025.
+// Created by adrian on 23/04/25.
 //
 
-#ifndef WMG_GAMESCREEN_H
-#define WMG_GAMESCREEN_H
-
+#ifndef TESTSCREEN_H
+#define TESTSCREEN_H
 
 #include <iostream>
 #include <RS/Core.h>
 #include <RS/Graphics.h>
 
-#include "Graphics/Lane.h"
-#include "Graphics/GridTest.h"
 
-class GameScreen : public Scene {
+class TestScreen : public Scene {
 public:
-    explicit GameScreen(GameContext* context);
+    explicit TestScreen(GameContext* context);
 
     void onEnter() override;
 
@@ -29,4 +26,5 @@ public:
 };
 
 
-#endif //WMG_GAMESCREEN_H
+
+#endif //TESTSCREEN_H

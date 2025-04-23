@@ -13,7 +13,7 @@ class CompositeDrawable : public Drawable {
 public:
     CompositeDrawable() = default;
 
-    void addChild(std::shared_ptr<Drawable> drawable);
+    void add(std::shared_ptr<Drawable> drawable);
 
     void setRenderer(IRenderer* newRenderer) override;
 

@@ -6,9 +6,9 @@
 #define WMG_GRAPHICS_H
 
 #include "RS/Graphics/Drawable.h"
-#include "RS/Graphics/DrawInfo.h"
 #include "RS/Graphics/Containers/Container.h"
 #include "RS/Graphics/Containers/CompositeDrawable.h"
+#include "RS/Graphics/Containers/DebugContainer.h"
 #include "RS/Graphics/Shapes/Circle.h"
 #include "RS/Graphics/Shapes/Box.h"
 

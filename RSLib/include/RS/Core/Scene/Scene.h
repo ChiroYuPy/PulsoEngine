@@ -7,10 +7,12 @@
 
 
 #include <memory>
-#include "RS/Graphics/Containers/Container.h"
+#include "RS/Graphics/Containers/DebugContainer.h"
 #include "RS/Core/Events/Event.h"
 #include "RS/Core/Time.h"
 #include "RS/Core/GameContext.h"
+
+class DebugContainer;
 
 class Scene {
 public:
@@ -24,7 +26,7 @@ public:
     virtual void onUpdate(Time deltaTime) = 0;
     virtual void onEvent(const Event& event) = 0;
 
-    std::unique_ptr<Container> root;
+    std::unique_ptr<DebugContainer> root;
 
 protected:
     GameContext* ctx = nullptr;

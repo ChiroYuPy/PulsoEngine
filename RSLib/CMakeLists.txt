@@ -5,6 +5,7 @@ add_library(RSLib STATIC
         src/Graphics/Drawable.cpp
         src/Graphics/Containers/CompositeDrawable.cpp
         src/Graphics/Containers/Container.cpp
+        src/Graphics/Containers/DebugContainer.cpp
         src/Core/Rendering/SFMLRenderer.cpp
         src/Math/Vector2.cpp
         src/Math/BoundingBox.cpp
@@ -12,7 +13,6 @@ add_library(RSLib STATIC
         src/Core/Game.cpp
         src/Core/Scene/Scene.cpp
         src/Graphics/Shapes/Circle.cpp
-        src/Graphics/DrawInfo.cpp
         src/Graphics/Shapes/Shape.cpp
         src/Graphics/Shapes/Box.cpp
         src/Core/Scene/SceneStack.cpp

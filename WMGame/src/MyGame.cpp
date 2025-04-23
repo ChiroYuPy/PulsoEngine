@@ -6,7 +6,7 @@
 
 void MyGame::onInit() {
     sceneStack.push(std::make_unique<MainMenuScreen>(&ctx));
-
+    // sceneStack.push(std::make_unique<TestScreen>(&ctx));
 }
 
 void MyGame::onFrameStart() {

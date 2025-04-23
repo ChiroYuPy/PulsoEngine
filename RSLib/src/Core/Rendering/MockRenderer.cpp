@@ -16,15 +16,15 @@ void MockRenderer::clear(unsigned int color) {
     std::cout << "MockRenderer::clear" << std::endl;
 }
 
-void MockRenderer::drawRect(DrawInfo &transform, float width, float height, unsigned int color) {
+void MockRenderer::drawRect(Vector2& position, float width, float height, unsigned int color) {
     std::cout << "MockRenderer::drawRect" << std::endl;
 }
 
-void MockRenderer::drawCircle(DrawInfo &transform, float radius, unsigned int color) {
+void MockRenderer::drawCircle(Vector2& position, float radius, unsigned int color) {
     std::cout << "MockRenderer::drawCircle" << std::endl;
 }
 
-void MockRenderer::drawText(DrawInfo &transform, const std::string &text, unsigned int color) {
+void MockRenderer::drawText(Vector2& position, const std::string &text, unsigned int color) {
     std::cout << "MockRenderer::drawText" << std::endl;
 }
 

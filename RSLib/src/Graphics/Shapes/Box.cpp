@@ -5,7 +5,7 @@
 #include "RS/Graphics/Shapes/Box.h"
 
 Box::Box() {
-    size = {1.f, 1.f};
+    relativeSize = {1.f, 1.f};
 }
 
 void Box::setSize(const Vector2 &newSize) {
@@ -14,5 +14,7 @@ void Box::setSize(const Vector2 &newSize) {
 
 void Box::draw() {
     Drawable::draw();
-    if (renderer) renderer->drawRect(drawInfo, size.x, size.y, color);
+    Vector2 drawPos = absolutePosition - Vector2(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
+
+    if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color);
 }

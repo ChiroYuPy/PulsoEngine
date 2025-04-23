@@ -4,7 +4,7 @@
 
 #include "RS/Graphics/Containers/CompositeDrawable.h"
 
-void CompositeDrawable::addChild(std::shared_ptr<Drawable> drawable) {
+void CompositeDrawable::add(std::shared_ptr<Drawable> drawable) {
     drawable->setParent(this);
     children.push_back(std::move(drawable));
 }

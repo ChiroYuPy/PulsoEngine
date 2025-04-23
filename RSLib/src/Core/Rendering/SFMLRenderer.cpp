@@ -5,7 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include "RS/Core/Rendering/SFMLRenderer.h"
 #include "RS/Core/GameBase.h"
-#include "RS/Graphics/DrawInfo.h"
 
 SFMLRenderer::SFMLRenderer() : window(sf::VideoMode(800, 600), "WMG") {
     window.setFramerateLimit(60);
@@ -19,32 +18,22 @@ void SFMLRenderer::clear(unsigned int color) {
     window.clear(sf::Color(color));
 }
 
-void SFMLRenderer::drawRect(DrawInfo& transform, const float width, const float height, const unsigned int color) {
-    const Vector2 position = transform.getPosition();
-    const Vector2 size = transform.getSize();
-
-    sf::RectangleShape rect({size.x, size.y});
-
+void SFMLRenderer::drawRect(Vector2& position, const float width, const float height, const unsigned int color) {
+    sf::RectangleShape rect({width, height});
     rect.setPosition(position.x, position.y);
-    rect.setOrigin({size.x / 2.0f, size.y / 2.0f});
     rect.setFillColor(sf::Color(color));
-
     window.draw(rect);
 }
 
-void SFMLRenderer::drawCircle(DrawInfo& transform, float radius, const unsigned int color) {
+void SFMLRenderer::drawCircle(Vector2& position, float radius, const unsigned int color) {
     sf::CircleShape circle(radius);
-
-    const Vector2 position = transform.getPosition();
-
     circle.setPosition(position.x, position.y);
-    circle.setOrigin({radius, radius});
     circle.setFillColor(sf::Color(color));
-
+    circle.setOrigin({radius, radius});
     window.draw(circle);
 }
 
-void SFMLRenderer::drawText(DrawInfo &transform, const std::string &text, unsigned int color) {
+void SFMLRenderer::drawText(Vector2& position, const std::string &text, unsigned int color) {
 
 }
 

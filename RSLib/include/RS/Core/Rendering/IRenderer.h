@@ -5,7 +5,7 @@
 #ifndef WMG_IRENDERER_H
 #define WMG_IRENDERER_H
 
-#include "RS/Graphics/DrawInfo.h"
+#include <RS/Math/Vector2.h>
 
 #include "RS/Core/GameContext.h"
 
@@ -20,9 +20,9 @@ public:
     virtual void clear() = 0;
     virtual void clear(unsigned int color) = 0;
 
-    virtual void drawRect(DrawInfo& transform, float width, float height, unsigned int color) = 0;
-    virtual void drawCircle(DrawInfo& transform, float radius, unsigned int color) = 0;
-    virtual void drawText(DrawInfo& transform, const std::string& text, unsigned int color) = 0;
+    virtual void drawRect(Vector2& position, float width, float height, unsigned int color) = 0;
+    virtual void drawCircle(Vector2& position, float radius, unsigned int color) = 0;
+    virtual void drawText(Vector2& position, const std::string& text, unsigned int color) = 0;
 
     virtual void display() = 0;
     virtual bool shouldQuit() = 0;

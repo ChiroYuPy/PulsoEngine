@@ -6,7 +6,7 @@
 
 Shape::Shape() : color(0xFFFFFFFF) {}
 
-void Shape::setColor(unsigned int newColor) {
+void Shape::setColor(const unsigned int newColor) {
     color = newColor;
 }
 

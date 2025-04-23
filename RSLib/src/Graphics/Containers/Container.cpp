@@ -7,15 +7,22 @@
 Container::Container() : CompositeDrawable() {}
 
 void Container::updateLayout() {
+    const Vector2 parentSize = getSize();
+    const Vector2 parentOriginPosition = toVector2(origin);
+
     for (const auto& child : children) {
         Anchor anchor = child->getAnchor();
         const Vector2 anchorPosition = toVector2(anchor);
-        const Vector2 containerSize = getSize();
-        if (anchor != Anchor::None) child->setPosition({containerSize.x * anchorPosition.x, containerSize.y * anchorPosition.y});
+
+        if (anchor != Anchor::None) {
+            child->setOrigin(anchor);
+
+            child->setPosition({(anchorPosition.x - parentOriginPosition.x) * parentSize.x, (anchorPosition.y - parentOriginPosition.y) * parentSize.y});
+        }
     }
 }
 
-void Container::update(Time update) {
+void Container::update(const Time update) {
     CompositeDrawable::update(update);
     updateLayout();
 }

@@ -3,9 +3,8 @@
 //
 
 #include "Screens/MainMenuScreen.h"
-#include "Screens/GameScreen.h"
-#include "RS/Core/Audio/Music.h"
-#include "Graphics/BeatmapButton.h"
+
+#include <Screens/TestScreen.h>
 
 MainMenuScreen::MainMenuScreen(GameContext* context) : Scene(context) {
     music = std::make_unique<Music>("../WMGame/ressources/audio.mp3");
@@ -20,23 +19,76 @@ MainMenuScreen::MainMenuScreen(GameContext* context) : Scene(context) {
 }
 
 void MainMenuScreen::onEnter() {
-    auto circle1 = std::make_unique<Circle>(64);
-    circle1->setPosition({100, 300});
-    circle1->setColor(0xFF00AAFF);
-    circle1->setAnchor(Anchor::Center);
-    // circle1->moveTo({700, 300}, Time::millis(3000), Easing::EaseInOutQuad);
+    using namespace std;
 
-    root->addChild(std::move(circle1));
+    // Un conteneur principal géant
+    auto rootBox = make_unique<DebugContainer>();
+    rootBox->setAnchor(Anchor::Center);
+    rootBox->setSize({512, 512});
+    rootBox->setColor(0xFF222222);
+
+    // Un conteneur en haut à gauche
+    auto topLeftBox = make_unique<DebugContainer>();
+    topLeftBox->setAnchor(Anchor::TopLeft);
+    topLeftBox->setSize({128, 128});
+    topLeftBox->setColor(0xFFFFAAAA);
+
+    // Un sous conteneur centré dans topLeftBox
+    auto nestedTopLeft = make_unique<DebugContainer>();
+    nestedTopLeft->setAnchor(Anchor::Center);
+    nestedTopLeft->setSize({64, 64});
+    nestedTopLeft->setColor(0xFFAAFFAA);
+
+    topLeftBox->add(move(nestedTopLeft));
+    rootBox->add(move(topLeftBox));
+
+    // Un conteneur en haut à droite avec un cercle
+    auto topRightBox = make_unique<DebugContainer>();
+    topRightBox->setAnchor(Anchor::TopRight);
+    topRightBox->setSize({128, 128});
+    topRightBox->setColor(0xFFAAAAFF);
+
+    auto circle = make_unique<Circle>(32);
+    circle->setAnchor(Anchor::Center);
+    circle->setColor(0xFFFFFF00);
+    circle->setPosition({0, 0});
+    topRightBox->add(move(circle));
+
+    rootBox->add(move(topRightBox));
+
+    // Bas au centre, une pile de trois boîtes imbriquées
+    auto bottomBox = make_unique<DebugContainer>();
+    bottomBox->setAnchor(Anchor::Bottom);
+    bottomBox->setSize({160, 160});
+    bottomBox->setColor(0xFFFFAAFF);
+
+    auto inner1 = make_unique<DebugContainer>();
+    inner1->setAnchor(Anchor::TopLeft);
+    inner1->setSize({96, 96});
+    inner1->setColor(0xFFAAFFFF);
+
+    auto inner2 = make_unique<DebugContainer>();
+    inner2->setAnchor(Anchor::BottomRight);
+    inner2->setSize({48, 48});
+    inner2->setColor(0xFF00FFAA);
+
+    inner1->add(move(inner2));
+    bottomBox->add(move(inner1));
+    rootBox->add(move(bottomBox));
+
+    root->add(move(rootBox));
+
+    // Un son de clic de test
+    sound = make_unique<Sound>("../WMGame/ressources/ui-pop-up-243471.mp3");
+    sound->setVolume(1.f);
 
     auto button = std::make_unique<BeatmapButton>();
-    button->setAnchor(Anchor::Center);
-
-    root->addChild(std::move(button));
-
-    // music->start();
+    root->add(std::move(button));
 }
 
+
 void MainMenuScreen::onExit() {
+
 }
 
 void MainMenuScreen::onUpdate(Time deltaTime) {
@@ -51,6 +103,7 @@ void MainMenuScreen::onEvent(const Event& event) {
     else if (event.type == Event::KeyPressed) {
         if (event.key.code == Key::Escape) {} // ctx->quit();
         else if (event.key.code == Key::A) ctx->screenStack->push(std::make_unique<GameScreen>(ctx));
+        else if (event.key.code == Key::Z) ctx->screenStack->push(std::make_unique<TestScreen>(ctx));
         else if (event.key.code == Key::Space) sound->play();
     };
 }

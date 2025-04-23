@@ -29,6 +29,6 @@ Lane::Lane() {
         const uint32_t color = (r << 24) | (g << 16) | (b << 8) | a;
         box->setColor(color);
 
-        addChild(box);
+        add(box);
     }
 }

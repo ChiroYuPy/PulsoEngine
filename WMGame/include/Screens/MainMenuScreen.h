@@ -6,11 +6,13 @@
 #define WMG_MAINMENUSCREEN_H
 
 
-#include <iostream>
 #include <RS/Core.h>
 #include <RS/Graphics.h>
 #include "RS/Core/Audio/Music.h"
 #include "RS/Core/Audio/Sound.h"
+
+#include "Screens/GameScreen.h"
+#include "Graphics/BeatmapButton.h"
 
 class MainMenuScreen : public Scene {
 public:

@@ -11,5 +11,5 @@ BeatmapButton::BeatmapButton() {
     const auto box = std::make_shared<Box>();
     box->setRelativeSizeAxes(Axes::Both);
     box->sizeTo({0.1f, 1.0f}, Time::millis(2000), Easing::EaseInOutQuad);
-    addChild(box);
+    add(box);
 }

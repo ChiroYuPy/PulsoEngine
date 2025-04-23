@@ -4,25 +4,16 @@
 
 #include "RS/Graphics/Drawable.h"
 
-int Drawable::totalCount = 0;
-
-Drawable::Drawable() : relativePosition(0, 0), size(1, 1), origin(Anchor::Center), anchor(Anchor::Center) {
-    drawInfo = DrawInfo();
-    totalCount++;
-    // std::cout << "Drawable created (total: " << totalCount << ")" << std::endl;
+Drawable::Drawable() : relativePosition(0, 0), relativeSize(1.f, 1.f) {
+    Drawable::setOrigin(Anchor::Center);
 }
 
 Drawable::~Drawable() {
-    totalCount--;
-    // std::cout << "Drawable destroyed (total: " << totalCount << ")" << std::endl;
+
 }
 
 void Drawable::setRenderer(IRenderer* newRenderer) {
     renderer = newRenderer;
-}
-
-int Drawable::getTotalCount() {
-    return totalCount;
 }
 
 void Drawable::draw() {
@@ -35,18 +26,20 @@ void Drawable::update(Time deltaTime) {
 }
 
 void Drawable::updateTransform() {
-    DrawInfo relativeTransform;
-    relativeTransform.setPosition(relativePosition);
+    std::cout << originVector.x << " " << originVector.y << std::endl;
+
+    absolutePosition = relativePosition;
+
+    absoluteSize = relativeSize;
 
     if (parent) {
-        const Vector2 parentSize = parent->getSize();
-        Vector2 drawSize = size;
-        if (hasX(relativeSizeAxes)) drawSize.x = parentSize.x * size.x;
-        if (hasY(relativeSizeAxes)) drawSize.y = parentSize.y * size.y;
-        drawInfo = relativeTransform + parent->getDrawInfo();
-        drawInfo.setSize(drawSize);
+        absolutePosition += parent->getAbsolutePosition();
+        const Vector2 parentSize = parent->getSize(); // parent size
+
+        // size or relativeSizeAxes processing
+        if (hasX(relativeSizeAxes)) absoluteSize.x = parentSize.x * relativeSize.x;
+        if (hasY(relativeSizeAxes)) absoluteSize.y = parentSize.y * relativeSize.y;
     }
-    else drawInfo = relativeTransform;
 }
 
 void Drawable::setPosition(const Vector2 &newPosition) {
@@ -57,8 +50,34 @@ const Vector2& Drawable::getPosition() const {
     return relativePosition;
 }
 
+const Vector2& Drawable::getAbsolutePosition() const {
+    return absolutePosition;
+}
+
+void Drawable::setSize(const Vector2 &newSize) {
+    relativeSize = newSize;
+}
+
+const Vector2& Drawable::getSize() const {
+    return relativeSize;
+}
+
+const Vector2& Drawable::getAbsoluteSize() const {
+    return absoluteSize;
+}
+
+void Drawable::setOrigin(const Anchor &newOrigin) {
+    origin = newOrigin;
+    originVector = toVector2(origin);
+}
+
+const Anchor& Drawable::getOrigin() const {
+    return anchor;
+}
+
 void Drawable::setAnchor(const Anchor &newAnchor) {
     anchor = newAnchor;
+    anchorVector = toVector2(anchor);
 }
 
 const Anchor& Drawable::getAnchor() const {
@@ -71,18 +90,6 @@ void Drawable::setParent(Drawable *newParent) {
 
 Drawable* Drawable::getParent() const {
     return parent;
-}
-
-const DrawInfo& Drawable::getDrawInfo() const {
-    return drawInfo;
-}
-
-void Drawable::setSize(const Vector2 &newSize) {
-    size = newSize;
-}
-
-const Vector2& Drawable::getSize() const {
-    return size;
 }
 
 void Drawable::setRelativeSizeAxes(const Axes &newRelativeSizeAxes) {
@@ -99,6 +106,6 @@ void Drawable::moveTo(const Vector2 &target, Time duration, const std::function<
 }
 
 void Drawable::sizeTo(const Vector2 &target, Time duration, const std::function<float(float)> &easingFunc) noexcept {
-    auto animation = std::make_unique<AnimationTransform<Vector2>>(&size, size, target, duration, easingFunc);
+    auto animation = std::make_unique<AnimationTransform<Vector2>>(&relativeSize, relativeSize, target, duration, easingFunc);
     addAnimation(std::move(animation));
 }

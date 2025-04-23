@@ -9,13 +9,10 @@ add_executable(main WMGame/main.cpp
         WMGame/src/MyGame.cpp
         WMGame/src/Screens/MainMenuScreen.cpp
         WMGame/src/Screens/GameScreen.cpp
-        WMGame/include/Screens/GameScreen.h
+        WMGame/src/Screens/TestScreen.cpp
         WMGame/src/Graphics/Lane.cpp
-        WMGame/include/Graphics/Lane.h
         WMGame/src/Graphics/GridTest.cpp
-        WMGame/include/Graphics/GridTest.h
         WMGame/src/Graphics/BeatmapButton.cpp
-        WMGame/include/Graphics/BeatmapButton.h
 )
 
 target_include_directories(main PUBLIC WMGame/include)

@@ -5,10 +5,10 @@
 #include "RS/Graphics/Shapes/Circle.h"
 
 Circle::Circle(const float radius) : radius(radius) {
-    size = {radius * 2.f, radius * 2.f};
+    relativeSize = {radius * 2.f, radius * 2.f};
 }
 
 void Circle::draw() {
     Drawable::draw();
-    if (renderer) renderer->drawCircle(drawInfo, radius, color);
+    if (renderer) renderer->drawCircle(absolutePosition, radius, color);
 }

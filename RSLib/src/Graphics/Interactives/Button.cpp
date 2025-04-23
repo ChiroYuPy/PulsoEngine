@@ -25,12 +25,11 @@ void Button::onEvent(const Event &event) {
     };
 }
 
-bool Button::isContains(float x, float y) {
-    Vector2 position = getPosition();
-    Vector2 originVector = toVector2(origin);
-    float minX = position.x - size.x * originVector.x;
-    float minY = position.y - size.y * originVector.y;
-    float maxX = position.x + size.x * (1 - originVector.x);
-    float maxY = position.y + size.y * (1 - originVector.y);
-    return (minX < x < maxX) && (minY < y < maxY);
+bool Button::isContains(const float x, const float y) {
+    const Vector2 originVector = toVector2(origin);
+    const float minX = absolutePosition.x - absoluteSize.x * originVector.x;
+    const float minY = absolutePosition.y - absoluteSize.y * originVector.y;
+    const float maxX = absolutePosition.x + absoluteSize.x * (1 - originVector.x);
+    const float maxY = absolutePosition.y + absoluteSize.y * (1 - originVector.y);
+    return minX < x < maxX && minY < y < maxY;
 }

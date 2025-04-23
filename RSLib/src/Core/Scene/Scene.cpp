@@ -3,10 +3,18 @@
 //
 
 #include "RS/Core/Scene/Scene.h"
+
+#include <RS/Graphics/Containers/DebugContainer.h>
+
 #include "RS/Core/Events/Event.h"
 
 Scene::Scene(GameContext *context) {
     ctx = context;
-    root = std::make_unique<Container>();
-    root->setSize(ctx->renderer->getWindowSize());
+    const Vector2 windowSize = ctx->renderer->getWindowSize();
+
+    root = std::make_unique<DebugContainer>();
+    root->setSize({windowSize.x, windowSize.y});
+    root->setPosition({windowSize.x / 2.f, windowSize.y / 2.f});
+    root->setOrigin(Anchor::Center);
+    root->setColor(0x202020FF);
 }

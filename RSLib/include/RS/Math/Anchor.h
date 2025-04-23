@@ -8,9 +8,9 @@
 #include "Vector2.h"
 
 enum class Anchor {
-    TopLeft, TopCentre, TopRight,
+    TopLeft, Top, TopRight,
     CentreLeft, Center, CentreRight,
-    BottomLeft, BottomCentre, BottomRight,
+    BottomLeft, Bottom, BottomRight,
     None, // if you want to place it with only relative position ( from up left corner )
 };
 

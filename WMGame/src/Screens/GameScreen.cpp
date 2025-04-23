@@ -3,18 +3,16 @@
 //
 
 #include "Screens/GameScreen.h"
-#include "Graphics/Lane.h"
-#include "Graphics/GridTest.h"
 
 GameScreen::GameScreen(GameContext* context) : Scene(context) {
 }
 
 void GameScreen::onEnter() {
     auto lane = std::make_unique<Lane>();
-    root->addChild(std::move(lane));
+    root->add(std::move(lane));
 
     auto griTest = std::make_unique<GridTest>();
-    root->addChild(std::move(griTest));
+    root->add(std::move(griTest));
 
     // auto circle = std::make_unique<Circle>(24);
     // circle->setPosition({0, 100});

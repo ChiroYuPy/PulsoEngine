@@ -15,9 +15,9 @@ public:
     void clear() override;
     void clear(unsigned int color) override;
 
-    void drawRect(DrawInfo& transform, float width, float height, unsigned int color) override;
-    void drawCircle(DrawInfo& transform, float radius, unsigned int color) override;
-    void drawText(DrawInfo& transform, const std::string& text, unsigned int color) override;
+    void drawRect(Vector2& position, float width, float height, unsigned int color) override;
+    void drawCircle(Vector2& position, float radius, unsigned int color) override;
+    void drawText(Vector2& position, const std::string& text, unsigned int color) override;
 
     void display() override;
     bool shouldQuit() override;
