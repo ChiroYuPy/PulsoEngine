@@ -37,7 +37,6 @@ void GameScreen::onRender() {
 void GameScreen::onEvent(const Event &event) {
     if (event.type == Event::Closed) {} // ctx->quit();
     else if (event.type == Event::KeyPressed) {
-        if (event.key.code == Key::Escape) {} // ctx->quit();
-        else if (event.key.code == Key::B) ctx->screenStack->pop();
-    };
+        if (event.key.code == Key::Escape) ctx->screenStack->pop();
+    }
 }

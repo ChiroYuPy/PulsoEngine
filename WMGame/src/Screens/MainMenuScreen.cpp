@@ -105,5 +105,5 @@ void MainMenuScreen::onEvent(const Event& event) {
         else if (event.key.code == Key::A) ctx->screenStack->push(std::make_unique<GameScreen>(ctx));
         else if (event.key.code == Key::Z) ctx->screenStack->push(std::make_unique<TestScreen>(ctx));
         else if (event.key.code == Key::Space) sound->play();
-    };
+    }
 }

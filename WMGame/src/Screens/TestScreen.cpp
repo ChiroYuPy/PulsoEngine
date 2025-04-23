@@ -39,5 +39,8 @@ void TestScreen::onRender() {
 }
 
 void TestScreen::onEvent(const Event &event) {
-
+    if (event.type == Event::Closed) {} // ctx->quit();
+    else if (event.type == Event::KeyPressed) {
+        if (event.key.code == Key::Escape) ctx->screenStack->pop();
+    }
 }

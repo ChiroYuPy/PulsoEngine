@@ -10,7 +10,8 @@
 #include "RS/Core/Events/Event.h"
 
 #include "RS/Core/GameContext.h"
-#include "RS/Core/Rendering/SFMLRenderer.h"
+// #include "RS/Core/Rendering/SFMLRenderer.h"
+#include "RS/Core/Rendering/OpenGLRenderer.h"
 #include "RS/Core/Scene/SceneStack.h"
 
 #include "RS/Core/Clock.h"
@@ -34,7 +35,7 @@ protected:
 
     GameContext ctx;
     SceneStack sceneStack;
-    SFMLRenderer renderer;
+    OpenGLRenderer renderer;
 
 private:
     void mainLoop();

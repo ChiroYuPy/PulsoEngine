@@ -109,3 +109,46 @@ void Drawable::sizeTo(const Vector2 &target, Time duration, const std::function<
     auto animation = std::make_unique<AnimationTransform<Vector2>>(&relativeSize, relativeSize, target, duration, easingFunc);
     addAnimation(std::move(animation));
 }
+
+//TODO Interaction & Comportement utilisateur :
+/*
+ * - Ajouter support pour onClick() : détection de clic souris sur le Drawable.
+ * - Ajouter onHover() : changement d’apparence ou déclenchement d’un événement si la souris est au-dessus.
+ * - Ajouter onFocus() : gestion du focus clavier pour navigation ou actions contextuelles.
+ * - Supporter le onMouseEnter / onMouseLeave : événements déclenchés uniquement lors du changement d’état hover.
+ * - Possibilité de définir des zones de hit personnalisées (hitbox ≠ drawbox).
+ * - Ajout d’un système d’ID ou de nom pour référencer facilement certains éléments dans l’UI.
+ */
+
+//TODO Dessin et effets visuels :
+/*
+ * - Supporter l’opacité (alpha) et transitions d’alpha (fade in/out).
+ * - Ajout d’un système de thème ou de style (bordures, ombres, arrondis…).
+ * - Support d’un contour ou effet glow au survol ou focus.
+ * - Ajout de visuels dynamiques (par ex : ripple effect sur clic).
+ * - Ajout d’animations de transformation (rotation, scale, bounce).
+ */
+
+//TODO Layout et alignement :
+/*
+ * - Système de layout automatique : VerticalLayout, HorizontalLayout, GridLayout.
+ * - Gestion du padding et du margin entre enfants.
+ * - Support pour un "fill parent" ou "auto-size to content".
+ * - Positionnement absolu et relatif mélangé pour des cas complexes.
+ */
+
+//TODO Accessibilité et UX :
+/*
+ * - Navigation au clavier (Tab, flèches, Enter).
+ * - Système de focus visuel et vocalisation pour l’accessibilité.
+ * - Gestion des Tooltips (infobulles contextuelles).
+ * - Support de touches raccourcies (shortcut keys).
+ */
+
+//TODO Organisation interne :
+/*
+ * - Ajout de `handleEvent(const Event&, Vec2 parentPos)` dans Drawable.
+ * - Ajout d’un bool `hovered`, `focused`, `pressed` dans la classe.
+ * - Délégation automatique des événements aux enfants dans une UI arborescente.
+ * - Système de signal/slot (ou callbacks) pour interagir entre composants (comme Qt).
+ */

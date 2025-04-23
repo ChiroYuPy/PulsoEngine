@@ -9,7 +9,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-class SFMLRenderer : public IRenderer {
+class SFMLRenderer final : public IRenderer {
 public:
     explicit SFMLRenderer();
 

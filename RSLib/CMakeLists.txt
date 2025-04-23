@@ -6,7 +6,6 @@ add_library(RSLib STATIC
         src/Graphics/Containers/CompositeDrawable.cpp
         src/Graphics/Containers/Container.cpp
         src/Graphics/Containers/DebugContainer.cpp
-        src/Core/Rendering/SFMLRenderer.cpp
         src/Math/Vector2.cpp
         src/Math/BoundingBox.cpp
         src/Core/GameBase.cpp
@@ -25,27 +24,21 @@ add_library(RSLib STATIC
         src/Core/Color.cpp
         src/Core/Rendering/MockRenderer.cpp
         src/Core/Rendering/IRenderer.cpp
+        src/Core/Rendering/SFMLRenderer.cpp
+        src/Core/Rendering/OpenGLRenderer.cpp
         src/Core/GameContexte.cpp
         src/Graphics/Shapes/Text.cpp
         src/Core/Audio/AudioManager.cpp
-        include/RS/Core/Audio/AudioManager.h
         src/Core/Audio/Music.cpp
-        include/RS/Core/Audio/Music.h
         src/Core/Audio/Sound.cpp
-        include/RS/Core/Audio/Sound.h
         src/Core/Audio/miniaudio_impl.cpp
         src/Math/Anchor.cpp
-        include/RS/Math/Anchor.h
         src/Graphics/Containers/FillFlowContainer.cpp
-        include/RS/Graphics/Containers/FillFlowContainer.h
         src/Graphics/Containers/GridContainer.cpp
-        include/RS/Graphics/Containers/GridContainer.h
         src/Graphics/Interactives/DrawableInteractable.cpp
-        include/RS/Graphics/Interactives/DrawableInteractable.h
         src/Graphics/Interactives/Button.cpp
-        include/RS/Graphics/Interactives/Button.h
 )
 
 target_include_directories(RSLib PUBLIC include)
 
-target_link_libraries(RSLib PUBLIC sfml-system sfml-window sfml-graphics)
+target_link_libraries(RSLib PUBLIC sfml-system sfml-window sfml-graphics glfw OpenGL)
