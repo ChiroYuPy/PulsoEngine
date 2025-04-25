@@ -6,9 +6,9 @@
 #define WMG_GRIDTEST_H
 
 
-#include "RS/Graphics/Containers/GridContainer.h"
-#include "RS/Graphics/Shapes/Box.h"
-#include "RS/Graphics/Shapes/Circle.h"
+#include "PULSO/Graphics/Containers/GridContainer.h"
+#include "PULSO/Graphics/Shapes/Box.h"
+#include "PULSO/Graphics/Shapes/Circle.h"
 #include <random>
 
 class GridTest : public GridContainer {

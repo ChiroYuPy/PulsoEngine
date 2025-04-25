@@ -3,7 +3,7 @@ project(WMG VERSION 1.0.0)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_subdirectory(RSLib)
+add_subdirectory(PulsoLib)
 
 add_executable(main WMGame/main.cpp
         WMGame/src/MyGame.cpp
@@ -17,4 +17,4 @@ add_executable(main WMGame/main.cpp
 
 target_include_directories(main PUBLIC WMGame/include)
 
-target_link_libraries(main RSLib)
+target_link_libraries(main PulsoLib)

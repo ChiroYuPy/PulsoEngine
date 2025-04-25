@@ -99,11 +99,11 @@ void MainMenuScreen::onRender() {
 }
 
 void MainMenuScreen::onEvent(const Event& event) {
-    if (event.type == Event::Closed) {} // ctx->quit();
-    else if (event.type == Event::KeyPressed) {
-        if (event.key.code == Key::Escape) {} // ctx->quit();
-        else if (event.key.code == Key::A) ctx->screenStack->push(std::make_unique<GameScreen>(ctx));
-        else if (event.key.code == Key::Z) ctx->screenStack->push(std::make_unique<TestScreen>(ctx));
-        else if (event.key.code == Key::Space) sound->play();
+    if (event.type == Event::Type::Closed) {} // ctx->quit();
+    else if (event.type == Event::Type::KeyDown) {
+        if (event.key.code == Event::Key::Escape) {} // ctx->quit();
+        else if (event.key.code == Event::Key::A) ctx->screenStack->push(std::make_unique<GameScreen>(ctx));
+        else if (event.key.code == Event::Key::Z) ctx->screenStack->push(std::make_unique<TestScreen>(ctx));
+        else if (event.key.code == Event::Key::Space) sound->play();
     }
 }

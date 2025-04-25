@@ -5,7 +5,6 @@
 #include "Graphics/Lane.h"
 
 Lane::Lane() {
-    setDirection(Direction::Horizontal);
     Drawable::setAnchor(Anchor::Center);
     Drawable::setSize({256, 256});
 

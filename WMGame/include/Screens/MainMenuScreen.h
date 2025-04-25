@@ -6,10 +6,10 @@
 #define WMG_MAINMENUSCREEN_H
 
 
-#include <RS/Core.h>
-#include <RS/Graphics.h>
-#include "RS/Core/Audio/Music.h"
-#include "RS/Core/Audio/Sound.h"
+#include <PULSO/Core.h>
+#include <PULSO/Graphics.h>
+#include "PULSO/Core/Audio/Music.h"
+#include "PULSO/Core/Audio/Sound.h"
 
 #include "Screens/GameScreen.h"
 #include "Graphics/BeatmapButton.h"

@@ -3,7 +3,6 @@
 //
 
 #include "Graphics/BeatmapButton.h"
-#include "RS/Graphics/Shapes/Box.h"
 
 BeatmapButton::BeatmapButton() {
     Drawable::setSize({256, 64});

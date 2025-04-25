@@ -6,8 +6,8 @@
 #define TESTSCREEN_H
 
 #include <iostream>
-#include <RS/Core.h>
-#include <RS/Graphics.h>
+#include <PULSO/Core.h>
+#include <PULSO/Graphics.h>
 
 
 class TestScreen : public Scene {

@@ -6,7 +6,7 @@
 #define WMG_MYGAME_H
 
 
-#include <RS/Core.h>
+#include <PULSO/Core.h>
 
 #include "Screens/MainMenuScreen.h"
 #include "Screens/TestScreen.h"

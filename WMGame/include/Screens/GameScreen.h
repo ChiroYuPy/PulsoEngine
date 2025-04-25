@@ -7,8 +7,8 @@
 
 
 #include <iostream>
-#include <RS/Core.h>
-#include <RS/Graphics.h>
+#include <PULSO/Core.h>
+#include <PULSO/Graphics.h>
 
 #include "Graphics/Lane.h"
 #include "Graphics/GridTest.h"

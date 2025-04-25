@@ -5,8 +5,9 @@
 #ifndef WMG_BEATMAPBUTTON_H
 #define WMG_BEATMAPBUTTON_H
 
+#include "PULSO/Graphics/Shapes/Box.h"
 
-#include "RS/Graphics/Interactives/Button.h"
+#include "PULSO/Graphics/Interactives/Button.h"
 
 class BeatmapButton : public Button {
 public:
