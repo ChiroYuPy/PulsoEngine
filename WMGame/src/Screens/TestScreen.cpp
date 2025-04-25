@@ -20,7 +20,7 @@ void TestScreen::onEnter() {
 
     auto innerInnerContainer = std::make_unique<DebugContainer>();
     innerInnerContainer->setSize({48, 48});
-    innerInnerContainer->setAnchor(Anchor::Center);
+    innerInnerContainer->setAnchor(Anchor::Bottom);
     innerInnerContainer->setColor(0xFF5555FF);
 
     // objects concatenate
