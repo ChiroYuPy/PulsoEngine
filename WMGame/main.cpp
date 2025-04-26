@@ -2,7 +2,7 @@
 
 int main() {
     AudioManager::get();
-    MyGame game;
+    WMGame game;
     game.start();
     return 0;
 }

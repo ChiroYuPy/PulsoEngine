@@ -12,7 +12,7 @@ Drawable::~Drawable() {
 
 }
 
-void Drawable::setRenderer(IRenderer* newRenderer) {
+void Drawable::setRenderer(Renderer* newRenderer) {
     renderer = newRenderer;
 }
 

@@ -12,7 +12,7 @@
 #include "Screens/TestScreen.h"
 
 
-class MyGame : public Game {
+class WMGame : public Game {
 protected:
     void onInit() override;
 

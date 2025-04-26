@@ -15,15 +15,17 @@ public:
 
     void add(std::shared_ptr<Drawable> drawable);
 
-    void setRenderer(IRenderer* newRenderer) override;
-
     void clear();
+
+    unsigned int size() const;
 
     void draw() override;
 
     void update(Time deltaTime) override;
 
     void onEvent(const Event& event) override;
+
+    void setRenderer(Renderer* newRenderer) override;
 
 protected:
     std::vector<std::shared_ptr<Drawable>> children;

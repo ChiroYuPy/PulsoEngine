@@ -10,5 +10,11 @@ Circle::Circle(const float radius) : radius(radius) {
 
 void Circle::draw() {
     Drawable::draw();
-    if (renderer) renderer->drawCircle(absolutePosition, radius, color);
+    sf::CircleShape circle;
+    circle.setRadius(radius);
+    circle.setPosition(absolutePosition.x, absolutePosition.y);
+    circle.setFillColor(sf::Color(color));
+    circle.setOrigin(radius, radius);
+    circle.setRotation(rotation.getAngle());
+    if (renderer) renderer->draw(circle);
 }

@@ -4,6 +4,8 @@
 
 #include "Screens/TestScreen.h"
 
+#include <Graphics/BeatmapButton.h>
+
 TestScreen::TestScreen(GameContext* context) : Scene(context) {
 
 }
@@ -28,6 +30,10 @@ void TestScreen::onEnter() {
     innerContainer->add(std::move(innerInnerContainer));
     outerContainer->add(std::move(innerContainer));
     root->add(std::move(outerContainer));
+
+    auto button = std::make_unique<BeatmapButton>();
+    button->onClick = [this] { ctx->screenStack->pop(); };
+    root->add(std::move(button));
 }
 
 void TestScreen::onExit() {
@@ -40,7 +46,7 @@ void TestScreen::onRender() {
 }
 
 void TestScreen::onEvent(const Event &event) {
-    if (event.type == Event::Type::Closed) {} // ctx->quit();
+    if (event.type == Event::Type::Closed) ctx->renderer->quitWindow();
     else if (event.type == Event::Type::KeyDown) {
         if (event.key.code == Event::Key::Escape) ctx->screenStack->pop();
     }

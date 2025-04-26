@@ -22,9 +22,7 @@ add_library(PulsoLib STATIC
         src/Core/Clock.cpp
         src/Core/Time.cpp
         src/Core/Color.cpp
-        src/Core/Rendering/MockRenderer.cpp
-        src/Core/Rendering/IRenderer.cpp
-        src/Core/Rendering/OpenGLRenderer.cpp
+        src/Core/Rendering/Renderer.cpp
         src/Core/GameContexte.cpp
         src/Graphics/Shapes/Text.cpp
         src/Core/Event/EventManager.cpp

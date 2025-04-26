@@ -13,8 +13,14 @@ void CompositeDrawable::clear() {
     children.clear();
 }
 
+unsigned int CompositeDrawable::size() const {
+    return children.size();
+}
+
 void CompositeDrawable::draw() {
-    for (const auto& child : children) child->draw();
+    for (const auto& child : children) {
+        child->draw();
+    }
 }
 
 void CompositeDrawable::update(const Time deltaTime) {
@@ -27,7 +33,7 @@ void CompositeDrawable::onEvent(const Event& event) {
     for (const auto& child : children) child->onEvent(event);
 }
 
-void CompositeDrawable::setRenderer(IRenderer *newRenderer) {
+void CompositeDrawable::setRenderer(Renderer *newRenderer) {
     Drawable::setRenderer(newRenderer);
     for (const auto& child : children) child->setRenderer(renderer);
 }

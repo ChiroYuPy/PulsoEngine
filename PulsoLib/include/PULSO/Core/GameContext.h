@@ -6,13 +6,13 @@
 #define WMG_GAMECONTEXT_H
 
 class SceneStack;
-class IRenderer;
+class Renderer;
 class EventManager;
 
 class GameContext {
 public:
     SceneStack* screenStack = nullptr;
-    IRenderer* renderer = nullptr;
+    Renderer* renderer = nullptr;
     EventManager* eventDispacher = nullptr;
 
     // AudioManager Audio;

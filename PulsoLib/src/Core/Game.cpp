@@ -10,3 +10,9 @@
 //TODO ajouter des formes, des objets, des composites, des containers
 
 //TODO vérifier comment fonctionne la classe Game de osu!framework pour les méthodes de base a forker
+
+
+void Game::onInit() {}
+void Game::onFrameStart() {}
+void Game::onFrameEnd() {}
+void Game::onCleanup() {}

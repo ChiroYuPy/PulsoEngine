@@ -15,7 +15,7 @@ bool Button::isPressed() const {
 }
 
 void Button::onEvent(const Event &event) {
-    if (event.type == Event::Type::MouseClick) {
+    if (event.type == Event::Type::MousePress) {
         pressed = true;
     }
 

@@ -8,7 +8,7 @@
 
 #include <memory>
 #include <functional>
-#include "PULSO/Core/Rendering/IRenderer.h"
+#include "PULSO/Core/Rendering/Renderer.h"
 #include "PULSO/Transform/Transformable.h"
 #include "PULSO/Transform/AnimationTransform.h"
 #include "PULSO/Math/Rotation.h"
@@ -36,7 +36,7 @@ public:
     Drawable();
     virtual ~Drawable();
 
-    virtual void setRenderer(IRenderer* newRenderer);
+    virtual void setRenderer(Renderer* newRenderer);
 
     virtual void draw();
 
@@ -94,7 +94,7 @@ protected:
 
     Drawable* parent = nullptr; // parent container, optional
 
-    IRenderer* renderer = nullptr;
+    Renderer* renderer = nullptr;
 };
 
 

@@ -7,10 +7,14 @@
 DebugContainer::DebugContainer() : color(0xBBBBBBFF) {}
 
 void DebugContainer::draw() {
-  Vector2 drawPos = absolutePosition - Vector2(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
-  if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color, 0);
-  // if you want show the position
-  if (renderer) renderer->drawCircle(absolutePosition, 2, 0xFFFFFFFF);
+  sf::RectangleShape box;
+  box.setSize({absoluteSize.x, absoluteSize.y});
+  box.setPosition(absolutePosition.x, absolutePosition.y);
+  box.setFillColor(sf::Color(color));
+  box.setOrigin(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
+  box.setRotation(rotation.getAngle());
+
+  if (renderer) renderer->draw(box);
   Container::draw();
 }
 

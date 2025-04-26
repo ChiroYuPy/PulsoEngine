@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(PulsoLib)
 
 add_executable(main WMGame/main.cpp
-        WMGame/src/MyGame.cpp
+        WMGame/src/WMGame.cpp
         WMGame/src/Screens/MainMenuScreen.cpp
         WMGame/src/Screens/GameScreen.cpp
         WMGame/src/Screens/TestScreen.cpp

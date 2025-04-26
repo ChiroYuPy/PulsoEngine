@@ -14,7 +14,11 @@ void Box::setSize(const Vector2 &newSize) {
 
 void Box::draw() {
     Drawable::draw();
-    Vector2 drawPos = absolutePosition - Vector2(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
-
-    if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color, rotation.getAngle());
+    sf::RectangleShape box;
+    box.setSize({absoluteSize.x, absoluteSize.y});
+    box.setPosition(absolutePosition.x, absolutePosition.y);
+    box.setFillColor(sf::Color(color));
+    box.setOrigin(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
+    box.setRotation(rotation.getAngle());
+    if (renderer) renderer->draw(box);
 }

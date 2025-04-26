@@ -41,7 +41,3 @@ void GameBase::mainLoop() {
     }
 }
 
-void GameBase::onInit() {}
-void GameBase::onFrameStart() {}
-void GameBase::onFrameEnd() {}
-void GameBase::onCleanup() {}

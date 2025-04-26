@@ -26,6 +26,8 @@ public:
     virtual void onUpdate(Time deltaTime) = 0;
     virtual void onEvent(const Event& event) = 0;
 
+    void updateRoot() const;
+
     std::unique_ptr<DebugContainer> root;
 
 protected:

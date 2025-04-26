@@ -6,65 +6,68 @@
 #define WMG_EVENT_H
 
 #include <GLFW/glfw3.h>
+#include <PULSO/Math/Vector2.h>
 
 struct Event {
     enum class Type {
+        Closed,
         KeyDown,
         KeyUp,
-        MouseMove,
-        MouseClick,
+        MousePress,
         MouseRelease,
+        MouseMoved,
         MouseScroll,
-        Closed
+        Resized,
+        Unknown
     };
 
     enum class Key {
-        A = 24,
-        B = 56,
-        C = 54,
-        D = 40,
-        E = 26,
-        F = 41,
-        G = 42,
-        H = 43,
-        I = 31,
-        J = 44,
-        K = 45,
-        L = 46,
-        M = 47,
-        N = 57,
-        O = 32,
-        P = 33,
-        Q = 38,
-        R = 27,
-        S = 39,
-        T = 28,
-        U = 30,
-        V = 55,
-        W = 52,
-        X = 53,
-        Y = 29,
+        A = 0,
+        B = 1,
+        C = 2,
+        D = 3,
+        E = 4,
+        F = 5,
+        G = 6,
+        H = 7,
+        I = 8,
+        J = 9,
+        K = 10,
+        L = 11,
+        M = 12,
+        N = 13,
+        O = 14,
+        P = 15,
+        Q = 16,
+        R = 17,
+        S = 18,
+        T = 29,
+        U = 20,
+        V = 21,
+        W = 22,
+        X = 23,
+        Y = 24,
         Z = 25,
-        N1 = 10,
-        N2 = 11,
-        N3 = 12,
-        N4 = 13,
-        N5 = 14,
-        N6 = 15,
-        N7 = 16,
-        N8 = 17,
-        N9 = 18,
-        N0 = 19,
-        Space = 65,
-        Enter = 36,
-        Escape = 9,
+        N1 = 27,
+        N2 = 28,
+        N3 = 29,
+        N4 = 51,
+        N5 = 31,
+        N6 = 56,
+        N7 = 33,
+        N8 = 34,
+        N9 = 35,
+        N0 = 26,
+        Space = 57,
+        Enter = 58,
+        Escape = 36,
     };
 
     Type type;
 
     union {
-        struct { int code, mods; } key;
-        struct { int button, mods; } button;
+        struct { int code; bool shift, alt; } key;
+        struct { int code; } button;
         struct { double horizontal, vertical; } scroll;
         struct { int width, height; } resize;
     };
