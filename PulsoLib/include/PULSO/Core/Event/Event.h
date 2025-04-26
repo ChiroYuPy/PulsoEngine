@@ -64,14 +64,15 @@ struct Event {
 
     union {
         struct { int code, mods; } key;
-        struct { int button, mods; } mouseButton;
-        struct { double x, y; } mouseMove;
-        struct { double xoffset, yoffset; } scroll;
+        struct { int button, mods; } button;
+        struct { double horizontal, vertical; } scroll;
         struct { int width, height; } resize;
     };
+
+    Vector2 mousePos { 0.0f, 0.0f };
 };
 
-inline bool operator==(int keyCode, Event::Key key) {
+inline bool operator==(const int keyCode, Event::Key key) {
     return keyCode == static_cast<int>(key);
 }
 

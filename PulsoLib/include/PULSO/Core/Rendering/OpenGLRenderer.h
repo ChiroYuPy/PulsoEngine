@@ -12,7 +12,7 @@
 
 #include <stdexcept>
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 class OpenGLRenderer final : public IRenderer {
 public:
@@ -22,7 +22,7 @@ public:
     void clear() override;
     void clear(unsigned int color) override;
 
-    void drawRect(Vector2& position, float width, float height, unsigned int color) override;
+    void drawRect(Vector2& position, float width, float height, unsigned int color, float rotation) override;
     void drawCircle(Vector2& position, float radius, unsigned int color) override;
     void drawText(Vector2& position, const std::string& text, unsigned int color) override;
 
@@ -32,18 +32,19 @@ public:
     void pollEvents() override;
     Vector2 getWindowSize() override;
 
-    void static KeyCallback(GLFWwindow *win, int key, int code, int action, int mods);
-    void static MouseButtonCallback(GLFWwindow *win, int button, int action, int mods);
-    void static MouseMoveCallback(GLFWwindow *win, double xpos, double ypos);
-    void static ScrollCallback(GLFWwindow *win, double xoffset, double yoffset);
-
 private:
     GLFWwindow* window;
-    int fbWidth, fbHeight;
+    int fbWidth{}, fbHeight{};
+
+    Vector2 mousePos;
 
     void setupOrtho() const;
     void onWindowResize(int width, int height);
 
+    static void KeyCallback(GLFWwindow *win, int key, int code, int action, int mods);
+    static void MouseButtonCallback(GLFWwindow *win, int button, int action, int mods);
+    static void MouseMoveCallback(GLFWwindow *win, double xpos, double ypos);
+    static void ScrollCallback(GLFWwindow *win, double xo, double yo);
     static void FramebufferSizeCallback(GLFWwindow* win, int width, int height);
 };
 

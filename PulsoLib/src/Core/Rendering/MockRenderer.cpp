@@ -16,7 +16,7 @@ void MockRenderer::clear(unsigned int color) {
     std::cout << "MockRenderer::clear" << std::endl;
 }
 
-void MockRenderer::drawRect(Vector2& position, float width, float height, unsigned int color) {
+void MockRenderer::drawRect(Vector2& position, float width, float height, unsigned int color, const float rotation) {
     std::cout << "MockRenderer::drawRect" << std::endl;
 }
 

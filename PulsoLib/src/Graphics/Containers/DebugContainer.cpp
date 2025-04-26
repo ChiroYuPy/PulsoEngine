@@ -8,9 +8,9 @@ DebugContainer::DebugContainer() : color(0xBBBBBBFF) {}
 
 void DebugContainer::draw() {
   Vector2 drawPos = absolutePosition - Vector2(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
-  if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color);
+  if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color, 0);
   // if you want show the position
-  // if (renderer) renderer->drawCircle(absolutePosition, 2, 0xFFFFFFFF);
+  if (renderer) renderer->drawCircle(absolutePosition, 2, 0xFFFFFFFF);
   Container::draw();
 }
 

@@ -16,5 +16,5 @@ void Box::draw() {
     Drawable::draw();
     Vector2 drawPos = absolutePosition - Vector2(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
 
-    if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color);
+    if (renderer) renderer->drawRect(drawPos, absoluteSize.x, absoluteSize.y, color, rotation.getAngle());
 }

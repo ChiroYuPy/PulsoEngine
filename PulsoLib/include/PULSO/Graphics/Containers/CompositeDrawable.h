@@ -23,6 +23,8 @@ public:
 
     void update(Time deltaTime) override;
 
+    void onEvent(const Event& event) override;
+
 protected:
     std::vector<std::shared_ptr<Drawable>> children;
 };

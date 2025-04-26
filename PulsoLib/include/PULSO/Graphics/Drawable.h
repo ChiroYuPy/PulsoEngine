@@ -11,6 +11,7 @@
 #include "PULSO/Core/Rendering/IRenderer.h"
 #include "PULSO/Transform/Transformable.h"
 #include "PULSO/Transform/AnimationTransform.h"
+#include "PULSO/Math/Rotation.h"
 #include "PULSO/Math/Anchor.h"
 
 struct Event;
@@ -41,7 +42,7 @@ public:
 
     void update(Time deltaTime) override;
 
-    virtual void onEvent(const Event& event) {}
+    virtual void onEvent(const Event& event);
 
     virtual void updateTransform();
 
@@ -55,9 +56,14 @@ public:
 
     virtual void setOrigin(const Anchor& newOrigin);
     [[nodiscard]] const Anchor& getOrigin() const;
+    [[nodiscard]] const Vector2& getOriginVector() const;
 
     virtual void setAnchor(const Anchor& newAnchor);
     [[nodiscard]] const Anchor& getAnchor() const;
+    [[nodiscard]] const Vector2& getAnchorVector() const;
+
+    virtual void setRotation(const Rotation& newRotation);
+    [[nodiscard]] const Rotation& getRotation() const;
 
     virtual void setRelativeSizeAxes(const Axes& newRelativeSizeAxes);
     [[nodiscard]] const Axes& getRelativeSizeAxes() const;
@@ -75,6 +81,8 @@ protected:
 
     Vector2 relativeSize; // {0.0f -> inf, 0.0f -> inf}
     Vector2 absoluteSize; // {0.0f -> inf, 0.0f -> inf}
+
+    Rotation rotation;
 
     Axes relativeSizeAxes = Axes::None;
 

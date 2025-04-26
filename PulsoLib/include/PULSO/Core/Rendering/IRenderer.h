@@ -20,7 +20,7 @@ public:
     virtual void clear() = 0;
     virtual void clear(unsigned int color) = 0;
 
-    virtual void drawRect(Vector2& position, float width, float height, unsigned int color) = 0;
+    virtual void drawRect(Vector2& position, float width, float height, unsigned int color, float rotation) = 0;
     virtual void drawCircle(Vector2& position, float radius, unsigned int color) = 0;
     virtual void drawText(Vector2& position, const std::string& text, unsigned int color) = 0;
 

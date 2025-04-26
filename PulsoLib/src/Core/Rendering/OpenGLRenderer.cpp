@@ -60,9 +60,11 @@ void OpenGLRenderer::onWindowResize(const int width, const int height) {
 }
 
 void OpenGLRenderer::FramebufferSizeCallback(GLFWwindow* win, const int width, const int height) {
-    const auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win));
-    self->onWindowResize(width, height);
+    if (const auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win))) {
+        self->onWindowResize(width, height);
+    }
 }
+
 
 void OpenGLRenderer::clear() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -77,20 +79,33 @@ void OpenGLRenderer::clear(const unsigned int color) {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void OpenGLRenderer::drawRect(Vector2& position, const float width, const float height, const unsigned int color) {
+void OpenGLRenderer::drawRect(Vector2& position, const float width, const float height, const unsigned int color, const float rotation) {
     const float r = ((color >> 24) & 0xFF) / 255.0f;
     const float g = ((color >> 16) & 0xFF) / 255.0f;
-    const float b = ((color >>  8) & 0xFF) / 255.0f;
-    const float a = ( color        & 0xFF) / 255.0f;
+    const float b = ((color >> 8) & 0xFF) / 255.0f;
+    const float a = (color & 0xFF) / 255.0f;
+
+    // Appliquer la couleur
     glColor4f(r, g, b, a);
 
-    // Dessin direct en pixels
+    // Sauvegarder la matrice actuelle
+    glPushMatrix();
+
+    // Appliquer la rotation autour du centre du rectangle
+    glTranslatef(position.x + width / 2, position.y + height / 2, 0);  // Déplacer le centre du rectangle au point d'origine
+    glRotatef(rotation, 0, 0, 1); // Effectuer la rotation sur l'axe Z
+    glTranslatef(-(position.x + width / 2), -(position.y + height / 2), 0); // Revenir à la position initiale
+
+    // Dessiner le rectangle
     glBegin(GL_QUADS);
-      glVertex2f(position.x,       position.y);
-      glVertex2f(position.x + width,   position.y);
-      glVertex2f(position.x + width,   position.y + height);
-      glVertex2f(position.x,       position.y + height);
+    glVertex2f(position.x, position.y);
+    glVertex2f(position.x + width, position.y);
+    glVertex2f(position.x + width, position.y + height);
+    glVertex2f(position.x, position.y + height);
     glEnd();
+
+    // Restaurer la matrice
+    glPopMatrix();
 }
 
 void OpenGLRenderer::drawCircle(Vector2& position, const float radius, const unsigned int color) {
@@ -134,18 +149,22 @@ Vector2 OpenGLRenderer::getWindowSize() {
     return { static_cast<float>(fbWidth), static_cast<float>(fbHeight) };
 }
 
-void OpenGLRenderer::KeyCallback(GLFWwindow* win, const int key, const int code, const int action, const int mods) {
+void OpenGLRenderer::KeyCallback(GLFWwindow* win, int key, const int code, const int action, const int mods) {
     const auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win));
     if (!self || !self->ctx || !self->ctx->eventDispacher) return;
 
-    Event event;
+    Event event{};
     if (action == GLFW_PRESS) {
         event.type = Event::Type::KeyDown;
-        std::cout << code << std::endl;
     }
-    else if (action == GLFW_RELEASE) event.type = Event::Type::KeyUp;
-    else return;
+    else if (action == GLFW_RELEASE) {
+        event.type = Event::Type::KeyUp;
+    }
+    else {
+        return;
+    }
 
+    event.mousePos = { self->mousePos.x, self->mousePos.y };
     event.key = { code, mods };
     self->ctx->eventDispacher->addEvent(event);
 }
@@ -154,12 +173,19 @@ void OpenGLRenderer::MouseButtonCallback(GLFWwindow* win, const int button, cons
     const auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win));
     if (!self || !self->ctx || !self->ctx->eventDispacher) return;
 
-    Event event;
-    if (action == GLFW_PRESS) event.type = Event::Type::MouseClick;
-    else if (action == GLFW_RELEASE) event.type = Event::Type::MouseRelease;
-    else return;
+    Event event{};
+    if (action == GLFW_PRESS) {
+        event.type = Event::Type::MouseClick;
+    }
+    else if (action == GLFW_RELEASE) {
+        event.type = Event::Type::MouseRelease;
+    }
+    else {
+        return;
+    }
 
-    event.mouseButton = { button, mods };
+    event.mousePos = { self->mousePos.x, self->mousePos.y };
+    event.button = { button, mods };
     self->ctx->eventDispacher->addEvent(event);
 }
 
@@ -167,18 +193,24 @@ void OpenGLRenderer::MouseMoveCallback(GLFWwindow* win, const double xpos, const
     const auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win));
     if (!self || !self->ctx || !self->ctx->eventDispacher) return;
 
-    Event event;
+    self->mousePos.x = static_cast<float>(xpos);
+    self->mousePos.y = static_cast<float>(ypos);
+
+    Event event{};
+
     event.type = Event::Type::MouseMove;
-    event.mouseMove = { xpos, ypos };
+    event.mousePos = { self->mousePos.x, self->mousePos.y };
     self->ctx->eventDispacher->addEvent(event);
 }
 
-void OpenGLRenderer::ScrollCallback(GLFWwindow* win, const double xoffset, const double yoffset) {
-    const auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win));
+void OpenGLRenderer::ScrollCallback(GLFWwindow* win, const double xo, const double yo) {
+    auto self = static_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(win));
     if (!self || !self->ctx || !self->ctx->eventDispacher) return;
 
-    Event event;
+    Event event{};
     event.type = Event::Type::MouseScroll;
-    event.scroll = { xoffset, yoffset };
+    event.scroll = { xo, yo };
+    event.mousePos = { self->mousePos.x, self->mousePos.y };
     self->ctx->eventDispacher->addEvent(event);
 }
+

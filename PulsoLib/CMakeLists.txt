@@ -33,6 +33,7 @@ add_library(PulsoLib STATIC
         src/Core/Audio/Sound.cpp
         src/Core/Audio/miniaudio_impl.cpp
         src/Math/Anchor.cpp
+        src/Math/Rotation.cpp
         src/Graphics/Containers/GridContainer.cpp
         src/Graphics/Containers/BoxContainer.cpp
         src/Graphics/Interactives/Button.cpp

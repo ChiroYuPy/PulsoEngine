@@ -25,6 +25,10 @@ void Drawable::update(const Time deltaTime) {
     updateTransform();
 }
 
+void Drawable::onEvent(const Event& event) {
+
+}
+
 void Drawable::updateTransform() {
     absolutePosition = relativePosition;
 
@@ -70,7 +74,11 @@ void Drawable::setOrigin(const Anchor &newOrigin) {
 }
 
 const Anchor& Drawable::getOrigin() const {
-    return anchor;
+    return origin;
+}
+
+const Vector2& Drawable::getOriginVector() const {
+    return originVector;
 }
 
 void Drawable::setAnchor(const Anchor &newAnchor) {
@@ -80,6 +88,18 @@ void Drawable::setAnchor(const Anchor &newAnchor) {
 
 const Anchor& Drawable::getAnchor() const {
     return anchor;
+}
+
+const Vector2& Drawable::getAnchorVector() const {
+    return anchorVector;
+}
+
+void Drawable::setRotation(const Rotation& newRotation) {
+    rotation = newRotation;
+}
+
+const Rotation& Drawable::getRotation() const {
+    return rotation;
 }
 
 void Drawable::setParent(Drawable *newParent) {

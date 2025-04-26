@@ -16,6 +16,7 @@ void TestScreen::onEnter() {
     auto innerContainer = std::make_unique<DebugContainer>();
     innerContainer->setSize({128, 128});
     innerContainer->setAnchor(Anchor::Center);
+    innerContainer->setOrigin(Anchor::TopLeft);
     innerContainer->setColor(0xFF55FFFF);
 
     auto innerInnerContainer = std::make_unique<DebugContainer>();

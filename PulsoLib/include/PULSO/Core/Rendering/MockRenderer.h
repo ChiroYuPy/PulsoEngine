@@ -15,7 +15,7 @@ public:
     void clear() override;
     void clear(unsigned int color) override;
 
-    void drawRect(Vector2& position, float width, float height, unsigned int color) override;
+    void drawRect(Vector2& position, float width, float height, unsigned int color, float rotation) override;
     void drawCircle(Vector2& position, float radius, unsigned int color) override;
     void drawText(Vector2& position, const std::string& text, unsigned int color) override;
 
