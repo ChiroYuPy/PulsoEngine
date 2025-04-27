@@ -7,9 +7,13 @@
 
 #include <functional>
 #include <utility>
+#include <PULSO/Core/Color.h>
+
 #include "PULSO/Math/Vector2.h"
 #include "PULSO/Math/Functions.h"
 #include "PULSO/Core/Time.h"
+
+#include "PULSO/Math/Lerp.h"
 
 class IAnimationTransform {
 public:
@@ -49,5 +53,6 @@ AnimationTransform<T>::AnimationTransform() {
 extern template class AnimationTransform<float>;
 extern template class AnimationTransform<int>;
 extern template class AnimationTransform<Vector2>;
+extern template class AnimationTransform<Color>;
 
 #endif //WMG_ANIMATIONTRANSFORM_H

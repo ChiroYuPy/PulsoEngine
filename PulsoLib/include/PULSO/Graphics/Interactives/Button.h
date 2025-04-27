@@ -14,10 +14,15 @@ public:
 
     void onEvent(const Event& event) override;
 
-    bool isContains(float x, float y);
+    bool isContains(float x, float y) const;
 
     [[nodiscard]] bool isHovered() const;
     [[nodiscard]] bool isPressed() const;
+
+    virtual void onPress() {}
+    virtual void onRelease() {}
+    virtual void onHoverEnter() {}
+    virtual void onHoverExit() {}
 
 private:
     bool hovered = false;

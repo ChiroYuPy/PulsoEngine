@@ -9,9 +9,9 @@
 
 enum class Anchor {
     TopLeft, Top, TopRight,
-    CentreLeft, Center, CentreRight,
+    Left, Center, Right,
     BottomLeft, Bottom, BottomRight,
-    None, // if you want to place it with only relative position ( from up left corner )
+    Custom,
 };
 
 Vector2 toVector2(Anchor &anchor);

@@ -5,7 +5,7 @@
 #include "MyGame.h"
 
 void WMGame::onInit() {
-    renderer.setMode(1920, 1080, "WMGame - Made with PulsoEngine", 330);
+    renderer.setMode(800, 600, "WMGame - Made with PulsoEngine", 330);
     sceneStack.push(std::make_unique<MainMenuScreen>(&ctx));
 }
 

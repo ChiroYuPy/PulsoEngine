@@ -8,8 +8,8 @@ template<typename T>
 void AnimationTransform<T>::update(Time deltaTime) noexcept {
     if (finished) return;
 
-    double dt = deltaTime.asSeconds();
-    double dur = duration.asSeconds();
+    const double dt = deltaTime.asSeconds();
+    const double dur = duration.asSeconds();
 
     elapsedTime += dt;
 
@@ -17,16 +17,15 @@ void AnimationTransform<T>::update(Time deltaTime) noexcept {
         elapsedTime = dur;
     }
 
-    float t = (dur > 0.f) ? elapsedTime / dur : 1.f;
+    const float t = (dur > 0.f) ? elapsedTime / dur : 1.f;
 
-    *attribute = startValue + (endValue - startValue) * easingFunction(t);
+    *attribute = Lerp<T>::lerp(startValue, endValue, easingFunction(t));
 
     if (t >= 1.0) {
         finished = true;
         if (onFinished) onFinished();
     }
 }
-
 
 template<typename T>
 bool AnimationTransform<T>::isFinished() const noexcept { return finished; }
@@ -38,3 +37,4 @@ AnimationTransform<T>::AnimationTransform(T *attribute, T startValue, T endValue
 template class AnimationTransform<float>;
 template class AnimationTransform<int>;
 template class AnimationTransform<Vector2>;
+template class AnimationTransform<Color>;

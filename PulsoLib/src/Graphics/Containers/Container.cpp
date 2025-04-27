@@ -7,14 +7,14 @@
 Container::Container() : CompositeDrawable() {}
 
 void Container::updateLayout() {
-    const Vector2 parentSize   = getSize();
+    const Vector2 parentSize   = getAbsoluteSize();
     const Vector2 parentOrigin = getOriginVector();
 
     for (const auto& child : children) {
         const Anchor ca = child->getAnchor();
         const Vector2 cap = child->getAnchorVector();
-        if (ca != Anchor::None) {
-            const Vector2 childSize   = child->getSize();
+        if (ca != Anchor::Custom) {
+            const Vector2 childSize   = child->getAbsoluteSize();
             const Vector2 childOrigin = child->getOriginVector();
 
             Vector2 anchorPosition = {

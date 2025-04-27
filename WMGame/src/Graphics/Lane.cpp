@@ -23,9 +23,9 @@ Lane::Lane() {
         const int r = colorDist(gen);
         const int g = colorDist(gen);
         const int b = colorDist(gen);
-        const int a = 255;
+        constexpr int a = 255;
 
-        const uint32_t color = (r << 24) | (g << 16) | (b << 8) | a;
+        const Color color(r, g, b, a);
         box->setColor(color);
 
         add(box);

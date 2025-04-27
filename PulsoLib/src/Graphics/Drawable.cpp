@@ -4,6 +4,8 @@
 
 #include "PULSO/Graphics/Drawable.h"
 
+#include <PULSO/Core/Color.h>
+
 Drawable::Drawable() : relativePosition(0, 0), relativeSize(1.f, 1.f) {
     Drawable::setOrigin(Anchor::Center);
 }
@@ -130,10 +132,8 @@ void Drawable::sizeTo(const Vector2 &target, Time duration, const std::function<
 
 //TODO Interaction & Comportement utilisateur :
 /*
- * - Ajouter support pour onClick() : détection de clic souris sur le Drawable.
  * - Ajouter onHover() : changement d’apparence ou déclenchement d’un événement si la souris est au-dessus.
  * - Ajouter onFocus() : gestion du focus clavier pour navigation ou actions contextuelles.
- * - Supporter le onMouseEnter / onMouseLeave : événements déclenchés uniquement lors du changement d’état hover.
  * - Possibilité de définir des zones de hit personnalisées (hitbox ≠ drawbox).
  * - Ajout d’un système d’ID ou de nom pour référencer facilement certains éléments dans l’UI.
  */

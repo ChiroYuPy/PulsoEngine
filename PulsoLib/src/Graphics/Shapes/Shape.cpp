@@ -4,12 +4,19 @@
 
 #include "PULSO/Graphics/Shapes/Shape.h"
 
-Shape::Shape() : color(0xFFFFFFFF) {}
+#include <PULSO/Core/Color.h>
 
-void Shape::setColor(const unsigned int newColor) {
+Shape::Shape() : color() {}
+
+void Shape::setColor(const Color newColor) {
     color = newColor;
 }
 
-unsigned int Shape::getColor() const {
+Color Shape::getColor() const {
     return color;
+}
+
+void Shape::colorTo(const Color &target, Time duration, const std::function<float(float)> &easingFunc) noexcept {
+    auto animation = std::make_unique<AnimationTransform<Color>>(&color, color, target, duration, easingFunc);
+    addAnimation(std::move(animation));
 }

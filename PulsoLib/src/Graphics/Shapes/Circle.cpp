@@ -13,7 +13,7 @@ void Circle::draw() {
     sf::CircleShape circle;
     circle.setRadius(radius);
     circle.setPosition(absolutePosition.x, absolutePosition.y);
-    circle.setFillColor(sf::Color(color));
+    circle.setFillColor(sf::Color(color.toInteger()));
     circle.setOrigin(radius, radius);
     circle.setRotation(rotation.getAngle());
     if (renderer) renderer->draw(circle);

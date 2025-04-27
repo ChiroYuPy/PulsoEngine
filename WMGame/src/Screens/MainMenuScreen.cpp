@@ -49,7 +49,7 @@ void MainMenuScreen::onEnter() {
 
     auto circle = std::make_unique<Circle>(32);
     circle->setAnchor(Anchor::Center);
-    circle->setColor(0xFFFFFF00);
+    circle->setColor(Color(0xFFFFFF00));
     circle->setPosition({0, 0});
     topRightBox->add(move(circle));
 

@@ -86,8 +86,8 @@ protected:
 
     Axes relativeSizeAxes = Axes::None;
 
-    Anchor origin = Anchor::None; // {0.0f -> 1.0f, 0.0f -> 1.0f}
-    Anchor anchor = Anchor::None; // {0.0f -> 1.0f, 0.0f -> 1.0f}
+    Anchor origin = Anchor::Custom; // {0.0f -> 1.0f, 0.0f -> 1.0f}
+    Anchor anchor = Anchor::Custom; // {0.0f -> 1.0f, 0.0f -> 1.0f}
 
     Vector2 originVector = {};
     Vector2 anchorVector = {};

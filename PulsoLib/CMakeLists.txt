@@ -21,7 +21,6 @@ add_library(PulsoLib STATIC
         src/Transform/AnimationTransform.cpp
         src/Core/Clock.cpp
         src/Core/Time.cpp
-        src/Core/Color.cpp
         src/Core/Rendering/Renderer.cpp
         src/Core/GameContexte.cpp
         src/Graphics/Shapes/Text.cpp

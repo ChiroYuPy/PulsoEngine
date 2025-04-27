@@ -25,7 +25,7 @@ GridTest::GridTest() : GridContainer(4, 4) {
         const int b = colorDist(gen);
         constexpr int a = 255;
 
-        uint32_t color = (r << 24) | (g << 16) | (b << 8) | a;
+        const Color color(r, g, b, a);
         box->setColor(color);
 
         add(box);

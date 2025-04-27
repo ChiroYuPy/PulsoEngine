@@ -17,7 +17,7 @@ void Box::draw() {
     sf::RectangleShape box;
     box.setSize({absoluteSize.x, absoluteSize.y});
     box.setPosition(absolutePosition.x, absolutePosition.y);
-    box.setFillColor(sf::Color(color));
+    box.setFillColor(sf::Color(color.toInteger()));
     box.setOrigin(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
     box.setRotation(rotation.getAngle());
     if (renderer) renderer->draw(box);

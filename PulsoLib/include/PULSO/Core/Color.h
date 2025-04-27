@@ -6,24 +6,53 @@
 #define WMG_COLOR_H
 
 
-#include <string>
-#include <ios>
-#include <sstream>
+
+#include <cstdint>
 
 class Color {
 public:
-    unsigned char r, g, b, a;
+    constexpr Color() = default;
 
-    Color();
+    constexpr Color(std::uint8_t red, std::uint8_t green, std::uint8_t blue, std::uint8_t alpha = 255);
 
-    Color(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = 255);
+    constexpr explicit Color(std::uint32_t color);
 
-    static Color fromHex(const std::string& hex);
+    [[nodiscard]] constexpr std::uint32_t toInteger() const;
 
-    static Color fromRGB(unsigned char red, unsigned char green, unsigned char blue);
+    static const Color Black;
+    static const Color White;
+    static const Color Red;
+    static const Color Green;
+    static const Color Blue;
+    static const Color Yellow;
+    static const Color Magenta;
+    static const Color Cyan;
+    static const Color Transparent;
 
-    [[nodiscard]] std::string toString() const;
+    std::uint8_t r{};
+    std::uint8_t g{};
+    std::uint8_t b{};
+    std::uint8_t a{255};
 };
+
+[[nodiscard]] constexpr bool operator==(Color left, Color right);
+
+[[nodiscard]] constexpr bool operator!=(Color left, Color right);
+
+[[nodiscard]] constexpr Color operator+(Color left, Color right);
+
+[[nodiscard]] constexpr Color operator-(Color left, Color right);
+
+[[nodiscard]] constexpr Color operator*(Color left, Color right);
+
+constexpr Color& operator+=(Color& left, Color right);
+
+constexpr Color& operator-=(Color& left, Color right);
+
+constexpr Color& operator*=(Color& left, Color right);
+
+#include "Color.inl"
+
 
 
 #endif //WMG_COLOR_H
