@@ -38,4 +38,4 @@ add_library(PulsoLib STATIC
 
 target_include_directories(PulsoLib PUBLIC include)
 
-target_link_libraries(PulsoLib PUBLIC sfml-system sfml-window sfml-graphics glfw OpenGL)
+target_link_libraries(PulsoLib PUBLIC sfml-system sfml-window sfml-graphics)

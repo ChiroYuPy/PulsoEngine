@@ -12,9 +12,9 @@
 #include "PULSO/Core/Audio/Sound.h"
 
 #include "Screens/GameScreen.h"
-#include "Graphics/BeatmapButton.h"
+#include "Graphics/Buttons/BeatmapButton.h"
 
-class MainMenuScreen : public Scene {
+class MainMenuScreen final : public Scene {
 public:
     explicit MainMenuScreen(GameContext* context);
 

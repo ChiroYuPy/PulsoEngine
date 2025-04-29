@@ -4,34 +4,29 @@
 
 #include "Screens/TestScreen.h"
 
-#include <Graphics/BeatmapButton.h>
+#include <Graphics/Buttons/BeatmapButton.h>
+#include <Graphics/Buttons/FilterableButton.h>
+#include <PULSO/Graphics/Containers/SearchContainer.h>
 
 TestScreen::TestScreen(GameContext* context) : Scene(context) {
 
 }
 
 void TestScreen::onEnter() {
-    auto outerContainer = std::make_unique<DebugContainer>();
-    outerContainer->setSize({210, 210});
-    outerContainer->setAnchor(Anchor::TopLeft);
 
-    auto innerContainer = std::make_unique<DebugContainer>();
-    innerContainer->setSize({128, 128});
-    innerContainer->setAnchor(Anchor::Center);
-    innerContainer->setOrigin(Anchor::TopLeft);
-    innerContainer->setColor(0xFF55FFFF);
+    auto searchContainer = std::make_unique<SearchContainer>();
 
-    auto innerInnerContainer = std::make_unique<DebugContainer>();
-    innerInnerContainer->setSize({48, 48});
-    innerInnerContainer->setAnchor(Anchor::Bottom);
-    innerInnerContainer->setColor(0xFF5555FF);
+    for (int i = 0; i < 50; i++) {
+        auto searchButton = std::make_unique<FilterableButton>();
+        searchContainer->add(std::move(searchButton));
+    }
 
-    // objects concatenate
-    innerContainer->add(std::move(innerInnerContainer));
-    outerContainer->add(std::move(innerContainer));
-    root->add(std::move(outerContainer));
+    searchContainer->setSearchTerm("");
+
+    root->add(std::move(searchContainer));
 
     auto button = std::make_unique<BeatmapButton>();
+    button->setAnchor(Anchor::Left);
     button->onClick = [this] { ctx->screenStack->pop(); };
     root->add(std::move(button));
 }
