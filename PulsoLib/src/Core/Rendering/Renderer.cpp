@@ -92,6 +92,7 @@ void Renderer::pollEvents() {
                 event.type = Event::Type::MouseScroll;
                 event.scroll.horizontal = sfmlEvent.mouseWheelScroll.x;
                 event.scroll.vertical = sfmlEvent.mouseWheelScroll.y;
+                event.scroll.delta = sfmlEvent.mouseWheelScroll.delta;
             break;
             case sf::Event::Resized:
                 event.type = Event::Type::Resized;

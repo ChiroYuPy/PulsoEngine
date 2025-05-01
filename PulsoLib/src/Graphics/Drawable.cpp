@@ -58,6 +58,11 @@ const Vector2& Drawable::getAbsolutePosition() const {
     return absolutePosition;
 }
 
+Vector2 Drawable::getAbsoluteTopLeftCornerPosition() const {
+    const Vector2 originVectorSized = {originVector.x * absoluteSize.x, originVector.y * absoluteSize.y};
+    return absolutePosition - originVectorSized;
+}
+
 void Drawable::setSize(const Vector2 &newSize) {
     relativeSize = newSize;
 }

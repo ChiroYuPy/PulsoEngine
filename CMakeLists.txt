@@ -13,7 +13,7 @@ add_executable(main WMGame/main.cpp
         WMGame/src/Graphics/Lane.cpp
         WMGame/src/Graphics/GridTest.cpp
         WMGame/src/Graphics/Buttons/BeatmapButton.cpp
-        WMGame/src/Graphics/Buttons/FilterableButton.cpp
+        WMGame/src/Graphics/Containers/BeatmapCarrousel.cpp
 )
 
 target_include_directories(main PUBLIC WMGame/include)

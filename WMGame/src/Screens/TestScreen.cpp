@@ -5,8 +5,7 @@
 #include "Screens/TestScreen.h"
 
 #include <Graphics/Buttons/BeatmapButton.h>
-#include <Graphics/Buttons/FilterableButton.h>
-#include <PULSO/Graphics/Containers/SearchContainer.h>
+#include <Graphics/Containers/BeatmapCarrousel.h>
 
 TestScreen::TestScreen(GameContext* context) : Scene(context) {
 
@@ -14,21 +13,18 @@ TestScreen::TestScreen(GameContext* context) : Scene(context) {
 
 void TestScreen::onEnter() {
 
-    auto searchContainer = std::make_unique<SearchContainer>();
+    auto debugContainer = std::make_unique<DebugContainer>();
+    debugContainer->setColor(Color::Cyan);
+    debugContainer->setSize({256, 256});
+    root->add(std::move(debugContainer));
 
-    for (int i = 0; i < 50; i++) {
-        auto searchButton = std::make_unique<FilterableButton>();
-        searchContainer->add(std::move(searchButton));
-    }
+    auto beatmapCarrousel = std::make_unique<BeatmapCarrousel>();
+    root->add(std::move(beatmapCarrousel));
 
-    searchContainer->setSearchTerm("");
-
-    root->add(std::move(searchContainer));
-
-    auto button = std::make_unique<BeatmapButton>();
-    button->setAnchor(Anchor::Left);
-    button->onClick = [this] { ctx->screenStack->pop(); };
-    root->add(std::move(button));
+    // auto button = std::make_unique<BeatmapButton>();
+    // button->setAnchor(Anchor::Left);
+    // button->onClick = [this] { ctx->screenStack->pop(); };
+    // root->add(std::move(button));
 }
 
 void TestScreen::onExit() {

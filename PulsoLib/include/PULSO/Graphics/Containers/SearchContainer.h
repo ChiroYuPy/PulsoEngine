@@ -7,7 +7,6 @@
 
 
 #include "Container.h"
-#include "IFilterable.h"
 
 class SearchContainer : public Container {
     std::string searchTerm;

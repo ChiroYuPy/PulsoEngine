@@ -50,6 +50,8 @@ public:
     [[nodiscard]] const Vector2 &getPosition() const;
     [[nodiscard]] const Vector2 &getAbsolutePosition() const;
 
+    Vector2 getAbsoluteTopLeftCornerPosition() const;
+
     virtual void setSize(const Vector2& newSize);
     [[nodiscard]] const Vector2& getSize() const;
     [[nodiscard]] const Vector2& getAbsoluteSize() const;

@@ -15,7 +15,6 @@ add_library(PulsoLib STATIC
         src/Graphics/Shapes/Shape.cpp
         src/Graphics/Shapes/Box.cpp
         src/Core/Scene/SceneStack.cpp
-        src/Graphics/Containers/IFilterable.cpp
         src/Graphics/Containers/SearchContainer.cpp
         src/Transform/Transformable.cpp
         src/Transform/AnimationTransform.cpp
@@ -32,6 +31,7 @@ add_library(PulsoLib STATIC
         src/Math/Anchor.cpp
         src/Math/Rotation.cpp
         src/Graphics/Containers/GridContainer.cpp
+        src/Graphics/Containers/ScrollContainer.cpp
         src/Graphics/Containers/BoxContainer.cpp
         src/Graphics/Interactives/Button.cpp
 )

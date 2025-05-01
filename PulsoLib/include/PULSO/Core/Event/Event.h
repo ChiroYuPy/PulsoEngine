@@ -7,6 +7,7 @@
 
 #include <GLFW/glfw3.h>
 #include <PULSO/Math/Vector2.h>
+#include <SFML/Window/Event.hpp>
 
 struct Event {
     enum class Type {
@@ -68,7 +69,8 @@ struct Event {
     union {
         struct { int code; bool shift, alt; } key;
         struct { int code; } button;
-        struct { double horizontal, vertical; } scroll;
+        struct { double horizontal, vertical, delta;
+        } scroll;
         struct { int width, height; } resize;
     };
 

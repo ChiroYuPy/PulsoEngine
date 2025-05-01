@@ -10,7 +10,7 @@ void DebugContainer::draw() {
   sf::RectangleShape box;
   box.setSize({absoluteSize.x, absoluteSize.y});
   box.setPosition(absolutePosition.x, absolutePosition.y);
-  box.setFillColor(sf::Color(color));
+  box.setFillColor(sf::Color(color.toInteger()));
   box.setOrigin(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
   box.setRotation(rotation.getAngle());
 
@@ -18,10 +18,10 @@ void DebugContainer::draw() {
   Container::draw();
 }
 
-void DebugContainer::setColor(const unsigned int newColor) {
+void DebugContainer::setColor(Color newColor) {
   color = newColor;
 }
 
-unsigned int DebugContainer::getColor() const {
+Color DebugContainer::getColor() const {
   return color;
 }

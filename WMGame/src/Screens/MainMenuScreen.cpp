@@ -24,19 +24,19 @@ void MainMenuScreen::onEnter() {
     auto rootBox = std::make_unique<DebugContainer>();
     rootBox->setAnchor(Anchor::Center);
     rootBox->setSize({512, 512});
-    rootBox->setColor(0xFF222222);
+    rootBox->setColor(Color(0xFF222222));
 
     // Un conteneur en haut à gauche
     auto topLeftBox = std::make_unique<DebugContainer>();
     topLeftBox->setAnchor(Anchor::TopLeft);
     topLeftBox->setSize({128, 128});
-    topLeftBox->setColor(0xFFFFAAAA);
+    topLeftBox->setColor(Color(0xFFFFAAAA));
 
     // Un sous conteneur centré dans topLeftBox
     auto nestedTopLeft = std::make_unique<DebugContainer>();
     nestedTopLeft->setAnchor(Anchor::Center);
     nestedTopLeft->setSize({64, 64});
-    nestedTopLeft->setColor(0xFFAAFFAA);
+    nestedTopLeft->setColor(Color(0xFFAAFFAA));
 
     topLeftBox->add(move(nestedTopLeft));
     rootBox->add(move(topLeftBox));
@@ -45,7 +45,7 @@ void MainMenuScreen::onEnter() {
     auto topRightBox = std::make_unique<DebugContainer>();
     topRightBox->setAnchor(Anchor::TopRight);
     topRightBox->setSize({128, 128});
-    topRightBox->setColor(0xFFAAAAFF);
+    topRightBox->setColor(Color(0xFFAAAAFF));
 
     auto circle = std::make_unique<Circle>(32);
     circle->setAnchor(Anchor::Center);
@@ -59,18 +59,18 @@ void MainMenuScreen::onEnter() {
     auto bottomBox = std::make_unique<DebugContainer>();
     bottomBox->setAnchor(Anchor::Bottom);
     bottomBox->setSize({160, 160});
-    bottomBox->setColor(0xFFFFAAFF);
+    bottomBox->setColor(Color(0xFFFFAAFF));
 
     auto inner1 = std::make_unique<DebugContainer>();
     inner1->setAnchor(Anchor::TopLeft);
     inner1->setSize({96, 96});
-    inner1->setColor(0xFFAAFFFF);
+    inner1->setColor(Color(0xFFAAFFFF));
 
     auto inner2 = std::make_unique<DebugContainer>();
     inner2->setAnchor(Anchor::BottomRight);
     inner2->setSize({48, 48});
     inner2->setRotation(Rotation(45));
-    inner2->setColor(0xFF00FFAA);
+    inner2->setColor(Color(0xFF00FFAA));
 
     inner1->add(move(inner2));
     bottomBox->add(move(inner1));

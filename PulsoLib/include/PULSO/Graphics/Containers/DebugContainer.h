@@ -15,11 +15,11 @@ public:
 
     void draw() override;
 
-    void setColor(unsigned int newColor);
-    [[nodiscard]] unsigned int getColor() const;
+    void setColor(Color newColor);
+    [[nodiscard]] Color getColor() const;
 
 protected:
-    unsigned int color;
+    Color color;
 };
 
 

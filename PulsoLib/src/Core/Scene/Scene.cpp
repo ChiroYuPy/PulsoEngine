@@ -13,7 +13,7 @@ Scene::Scene(GameContext *context) {
     root->setSize({windowSize.x, windowSize.y});
     root->setPosition({windowSize.x / 2.f, windowSize.y / 2.f});
     root->setOrigin(Anchor::Center);
-    root->setColor(0x202020FF);
+    root->setColor(Color(0x202020FF));
 }
 
 void Scene::updateRoot() const {
