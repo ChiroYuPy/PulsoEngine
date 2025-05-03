@@ -7,14 +7,19 @@
 BoxContainer::BoxContainer() {}
 
 void BoxContainer::updateLayout() {
-    Vector2 totalSize;
-    for (auto& child : children) totalSize += child->getSize();
-
-    std::cout << totalSize.x << std::endl;
     Vector2 cursor;
 
-    if (direction == Direction::Horizontal) cursor.x -= totalSize.x / 2;
-    else cursor.y -= totalSize.y / 2;
+    float totalSize = (static_cast<float>(children.size()) - 1) * spacing;
+    if (direction == Direction::Horizontal) {
+        for (auto& child : children) totalSize += child->getSize().x;
+        totalSize -= children.front()->getSize().x;
+        cursor.x -= totalSize / 2;
+    }
+    else {
+        for (auto& child : children) totalSize += child->getSize().y;
+        totalSize -= children.front()->getSize().y;
+        cursor.y -= totalSize / 2;
+    }
 
     for (auto& child : children) {
         child->setPosition(cursor);

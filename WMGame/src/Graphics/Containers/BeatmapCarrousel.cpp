@@ -22,7 +22,7 @@ BeatmapCarrousel::BeatmapCarrousel() {
     }
 
     setSize({buttonWidth, 320.f});
-    boxContainer->setSize({buttonWidth, ((buttonHeight + spacing) * nbButtons)});
+    boxContainer->setSize({buttonWidth, (buttonHeight * nbButtons) + spacing * (nbButtons - 1)});
     boxContainer->setSpacing(spacing);
     boxContainer->setDirection(Direction::Vertical);
     add(std::move(boxContainer));
