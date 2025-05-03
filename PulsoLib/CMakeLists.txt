@@ -34,6 +34,8 @@ add_library(PulsoLib STATIC
         src/Graphics/Containers/ScrollContainer.cpp
         src/Graphics/Containers/BoxContainer.cpp
         src/Graphics/Interactives/Button.cpp
+        src/Graphics/Label.cpp
+        include/PULSO/Graphics/Label.h
 )
 
 target_include_directories(PulsoLib PUBLIC include)

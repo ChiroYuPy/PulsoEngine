@@ -22,10 +22,9 @@ void GameBase::start() {
 }
 
 void GameBase::mainLoop() {
-    Clock clock;
     while (!ctx.renderer->shouldQuit()) {
 
-        const Time deltaTime = clock.getElapsedTime();
+        deltaTime = clock.getElapsedTime();
         clock.restart();
 
         onFrameStart();

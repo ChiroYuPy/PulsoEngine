@@ -12,13 +12,16 @@ class ScrollContainer : public Container {
 public:
   ScrollContainer();
 
-private:
-  float scrollDistance = 80.f;
-  float clampExtension = 500.f; // maximum distance which objets can scroll after the edge of the ScrollContainer
+protected:
+    float distanceDecayDrag = 6.f; // rate with which the target position is approached after ending a drag
+    float distanceDecayScroll = 10.f; // rate with which the target position is approached after scrolling
+    float distanceDecayJump = 8.f; // rate with which the target position is approached after jumping to a specific location
 
-  float distanceDecayDrag = 0.0035f; // rate with which the target position is approached after ending a drag
-  float distanceDecayScroll = 0.01f; // rate with which the target position is approached after scrolling
-  float distanceDecayJump = 0.01f; // rate with which the target position is approached after jumping to a specific location
+    float scrollDistance = 80.f;
+    float clampExtension = 500.f; // maximum distance which objets can scroll after the edge of the ScrollContainer
+
+private:
+
   float distanceDecay = 0.f; // the current distanceDecay
 
   Vector2 currentPosition{};
@@ -32,6 +35,8 @@ private:
   void updateLayout() override;
 
   void onEvent(const Event& event) override;
+
+  void update(Time deltaTime) override;
 };
 
 

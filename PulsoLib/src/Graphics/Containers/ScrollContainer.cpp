@@ -13,16 +13,18 @@ Vector2 ScrollContainer::getScrollExtent() const {
   return {availableContent.x - scrollContainerSize.x, availableContent.y - scrollContainerSize.y};
 }
 
+void ScrollContainer::update(Time deltaTime) {
+    Container::update(deltaTime);
+    distanceDecay = distanceDecayScroll;
+    currentPosition += (targetPosition - currentPosition) * distanceDecay * deltaTime.asSeconds();
+}
+
 void ScrollContainer::updateLayout() {
   const auto onlyChild = children.front();
   availableContent = onlyChild->getAbsoluteSize();
 
   const float yOffset = - currentPosition.y - absoluteSize.y * 0.5f;
   onlyChild->setPosition({0, yOffset - (1 - onlyChild->getAbsoluteSize().y) * onlyChild->getOriginVector().y});
-
-  distanceDecay = distanceDecayScroll;
-  currentPosition += (targetPosition - currentPosition) * distanceDecay;
-
 }
 
 void ScrollContainer::onEvent(const Event& event) {

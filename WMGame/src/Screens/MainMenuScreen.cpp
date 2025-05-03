@@ -3,6 +3,7 @@
 //
 
 #include "Screens/MainMenuScreen.h"
+#include "PULSO/Graphics/Label.h"
 
 #include <Screens/TestScreen.h>
 
@@ -38,8 +39,8 @@ void MainMenuScreen::onEnter() {
     nestedTopLeft->setSize({64, 64});
     nestedTopLeft->setColor(Color(0xFFAAFFAA));
 
-    topLeftBox->add(move(nestedTopLeft));
-    rootBox->add(move(topLeftBox));
+    topLeftBox->add(std::move(nestedTopLeft));
+    rootBox->add(std::move(topLeftBox));
 
     // Un conteneur en haut à droite avec un cercle
     auto topRightBox = std::make_unique<DebugContainer>();
@@ -51,9 +52,9 @@ void MainMenuScreen::onEnter() {
     circle->setAnchor(Anchor::Center);
     circle->setColor(Color(0xFFFFFF00));
     circle->setPosition({0, 0});
-    topRightBox->add(move(circle));
+    topRightBox->add(std::move(circle));
 
-    rootBox->add(move(topRightBox));
+    rootBox->add(std::move(topRightBox));
 
     // Bas au centre, une pile de trois boîtes imbriquées
     auto bottomBox = std::make_unique<DebugContainer>();
@@ -72,16 +73,21 @@ void MainMenuScreen::onEnter() {
     inner2->setRotation(Rotation(45));
     inner2->setColor(Color(0xFF00FFAA));
 
-    inner1->add(move(inner2));
-    bottomBox->add(move(inner1));
-    rootBox->add(move(bottomBox));
+    inner1->add(std::move(inner2));
+    bottomBox->add(std::move(inner1));
+    rootBox->add(std::move(bottomBox));
 
-    root->add(move(rootBox));
+    root->add(std::move(rootBox));
 
     sound = std::make_unique<Sound>("../WMGame/ressources/ui-pop-up-243471.mp3");
     sound->setVolume(1.f);
 
-    auto button = std::make_unique<BeatmapButton>(Color::Blue);
+    auto label1 = std::make_unique<Label>();
+    label1->setText("Test Text");
+    label1->setFontSize(32);
+    root->add(std::move(label1));
+
+    auto button = std::make_unique<BeatmapButton>(Color::TransparentBlue);
     button->onClick = [this] { ctx->screenStack->push(std::make_unique<TestScreen>(ctx)); };
     root->add(std::move(button));
 

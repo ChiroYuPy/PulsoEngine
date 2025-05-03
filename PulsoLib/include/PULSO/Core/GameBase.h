@@ -34,6 +34,9 @@ protected:
     Renderer renderer;
     EventManager eventManager;
 
+    Clock clock;
+    Time deltaTime;
+
 private:
     void mainLoop();
 };

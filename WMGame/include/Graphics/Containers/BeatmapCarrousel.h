@@ -10,7 +10,10 @@
 
 class BeatmapCarrousel final : public ScrollContainer {
 public:
+
+    float distanceDecayScroll = 0.1f;
     BeatmapCarrousel();
+
 };
 
 
