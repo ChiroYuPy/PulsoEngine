@@ -8,7 +8,6 @@ add_library(PulsoLib STATIC
         src/Graphics/Containers/DebugContainer.cpp
         src/Math/Vector2.cpp
         src/Math/BoundingBox.cpp
-        src/Core/GameBase.cpp
         src/Core/Game.cpp
         src/Core/Scene/Scene.cpp
         src/Graphics/Shapes/Circle.cpp

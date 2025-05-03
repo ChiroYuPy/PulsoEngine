@@ -10,6 +10,7 @@
 
 #include "Screens/MainMenuScreen.h"
 #include "Screens/TestScreen.h"
+#include "PULSO/Core/Game.h"
 
 
 class WMGame : public Game {

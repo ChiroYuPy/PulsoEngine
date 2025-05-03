@@ -5,21 +5,40 @@
 #ifndef WMG_GAME_H
 #define WMG_GAME_H
 
+#include "PULSO/Core/GameContext.h"
+#include "PULSO/Core/Rendering/Renderer.h"
+#include "PULSO/Core/Scene/SceneStack.h"
+#include "PULSO/Core/Event/EventManager.h"
+
+#include "PULSO/Core/Clock.h"
+#include "PULSO/Core/Time.h"
 
 #include <memory>
-#include <stack>
-#include "PULSO/Core/GameBase.h"
 
-class Game : public GameBase {
+
+class Game {
 public:
-    Game() = default;
-    ~Game() override = default;
+    Game();
+    virtual ~Game() = default;
+
+    void start();
 
 protected:
-    void onInit() override;
-    void onFrameStart() override;
-    void onFrameEnd() override;
-    void onCleanup() override;
+    virtual void onInit() = 0;          // Before the first while
+    virtual void onFrameStart() = 0;    // Before events, update, render
+    virtual void onFrameEnd() = 0;      // After events, update, render
+    virtual void onCleanup() = 0;       // On the last while
+
+    GameContext ctx;
+    SceneStack sceneStack;
+    Renderer renderer;
+    EventManager eventManager;
+
+    Clock clock;
+    Time deltaTime;
+
+private:
+    void mainLoop();
 };
 
 

@@ -1,8 +1,8 @@
 #include "MyGame.h"
 
 int main() {
-    AudioManager::get();
-    WMGame game;
-    game.start();
+    AudioManager::get(); // to remove later
+    auto game = std::make_shared<WMGame>();
+    game->start();
     return 0;
 }

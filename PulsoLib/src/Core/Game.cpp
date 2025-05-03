@@ -2,17 +2,40 @@
 // Created by ChiroYuki on 08/04/2025.
 //
 
+
 #include "PULSO/Core/Game.h"
+#include "PULSO/Core/Audio/Music.h"
 
+Game::Game() {
+    ctx.screenStack = &sceneStack;
+    ctx.renderer = &renderer;
+    ctx.eventDispacher = &eventManager;
+    ctx.screenStack->setGameContext(&ctx);
+    ctx.renderer->setGameContext(&ctx);
+    ctx.eventDispacher->setGameContext(&ctx);
+}
 
-//TODO cacher le render des scènes pour uniquement créer et gérer des drawables, également permettre de choisir le clearColor
+void Game::start() {
+    onInit();
+    mainLoop();
+    onCleanup();
+}
 
-//TODO ajouter des formes, des objets, des composites, des containers
+void Game::mainLoop() {
+    while (!ctx.renderer->shouldQuit()) {
 
-//TODO vérifier comment fonctionne la classe Game de osu!framework pour les méthodes de base a forker
+        deltaTime = clock.getElapsedTime();
+        clock.restart();
 
+        onFrameStart();
 
-void Game::onInit() {}
-void Game::onFrameStart() {}
-void Game::onFrameEnd() {}
-void Game::onCleanup() {}
+        ctx.eventDispacher->clearEvents();
+        ctx.renderer->pollEvents();
+        for (auto event : ctx.eventDispacher->getEvents()) ctx.screenStack->onEvent(event);
+        ctx.screenStack->onUpdate(deltaTime);
+        ctx.screenStack->onRender();
+        ctx.renderer->display();
+
+        onFrameEnd();
+    }
+}

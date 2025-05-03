@@ -17,7 +17,6 @@ public:
 
     void push(std::unique_ptr<Scene> scene);
     void pop();
-    Scene* getTop();
     bool isEmpty() const;
     void clear();
     void quit();
@@ -25,6 +24,8 @@ public:
     void onEvent(const Event &event);
     void onUpdate(Time time);
     void onRender();
+
+    Scene* getCurrent();
 
 private:
     std::stack<std::unique_ptr<Scene>> scenes;

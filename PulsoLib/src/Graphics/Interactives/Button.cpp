@@ -26,7 +26,7 @@ void Button::onEvent(const Event& event) {
 
         case Event::Type::MouseRelease:
             if (pressed && isContains(event.mousePos.x, event.mousePos.y)) {
-                onRelease(); // Lâché sur le bouton
+                onRelease();
             }
         pressed = false;
         break;
