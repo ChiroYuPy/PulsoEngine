@@ -27,6 +27,8 @@ struct Vector2 {
     bool operator==(const Vector2& other) const;
     bool operator!=(const Vector2& other) const;
 
+    Vector2 operator-() const;
+
     [[nodiscard]] float length() const;
     [[nodiscard]] Vector2 normalized() const;
     [[nodiscard]] float dot(const Vector2& other) const;

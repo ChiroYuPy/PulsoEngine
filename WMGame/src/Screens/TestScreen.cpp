@@ -13,15 +13,10 @@ TestScreen::TestScreen(GameContext* context) : Scene(context) {
 
 void TestScreen::onEnter() {
 
-    auto debugContainer = std::make_unique<DebugContainer>();
-    debugContainer->setColor(Color::Cyan);
-    debugContainer->setSize({256, 256});
-    root->add(std::move(debugContainer));
-
     auto beatmapCarrousel = std::make_unique<BeatmapCarrousel>();
     root->add(std::move(beatmapCarrousel));
 
-    // auto button = std::make_unique<BeatmapButton>();
+    // auto button = std::make_unique<BeatmapButton>(Color::Purple);
     // button->setAnchor(Anchor::Left);
     // button->onClick = [this] { ctx->screenStack->pop(); };
     // root->add(std::move(button));

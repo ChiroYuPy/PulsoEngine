@@ -10,7 +10,7 @@
 
 class BeatmapButton final : public Button {
 public:
-    BeatmapButton();
+    BeatmapButton(Color color);
 
     void onPress() override;
 
@@ -24,6 +24,8 @@ private:
     std::shared_ptr<Box> boxShape;
 
     Time animDuration;
+
+    Color hoverColor;
 };
 
 

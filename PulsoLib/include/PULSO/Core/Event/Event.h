@@ -5,7 +5,6 @@
 #ifndef WMG_EVENT_H
 #define WMG_EVENT_H
 
-#include <GLFW/glfw3.h>
 #include <PULSO/Math/Vector2.h>
 #include <SFML/Window/Event.hpp>
 

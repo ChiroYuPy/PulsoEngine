@@ -81,7 +81,7 @@ void MainMenuScreen::onEnter() {
     sound = std::make_unique<Sound>("../WMGame/ressources/ui-pop-up-243471.mp3");
     sound->setVolume(1.f);
 
-    auto button = std::make_unique<BeatmapButton>();
+    auto button = std::make_unique<BeatmapButton>(Color::Blue);
     button->onClick = [this] { ctx->screenStack->push(std::make_unique<TestScreen>(ctx)); };
     root->add(std::move(button));
 

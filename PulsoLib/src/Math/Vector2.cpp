@@ -73,3 +73,7 @@ float Vector2::dot(const Vector2& other) const {
 void Vector2::print() const {
     std::cout << "Vector(" << x << ", " << y << ")" << std::endl;
 }
+
+Vector2 Vector2::operator-() const {
+    return Vector2(-x, -y);
+}

@@ -10,16 +10,24 @@ Drawable::Drawable() : relativePosition(0, 0), relativeSize(1.f, 1.f) {
     Drawable::setOrigin(Anchor::Center);
 }
 
-Drawable::~Drawable() {
-
-}
-
 void Drawable::setRenderer(Renderer* newRenderer) {
     renderer = newRenderer;
 }
 
 void Drawable::draw() {
+    debugDraw();
+}
 
+void Drawable::debugDraw() {
+    sf::RectangleShape box;
+    box.setSize({absoluteSize.x, absoluteSize.y});
+    box.setPosition(absolutePosition.x, absolutePosition.y);
+    box.setFillColor(sf::Color::Transparent);
+    box.setOutlineColor(sf::Color::White);
+    box.setOutlineThickness(1.f);
+    box.setOrigin(originVector.x * absoluteSize.x, originVector.y * absoluteSize.y);
+    box.setRotation(rotation.getAngle());
+    if (renderer) renderer->draw(box);
 }
 
 void Drawable::update(const Time deltaTime) {
@@ -38,7 +46,7 @@ void Drawable::updateTransform() {
 
     if (parent) {
         absolutePosition += parent->getAbsolutePosition();
-        const Vector2 parentSize = parent->getSize(); // parent size
+        const Vector2 parentSize = parent->getAbsoluteSize(); // parent size
 
         // size or relativeSizeAxes processing
         if (hasX(relativeSizeAxes)) absoluteSize.x = parentSize.x * relativeSize.x;

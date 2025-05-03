@@ -18,6 +18,7 @@ unsigned int CompositeDrawable::size() const {
 }
 
 void CompositeDrawable::draw() {
+    Drawable::draw();
     for (const auto& child : children) {
         child->draw();
     }

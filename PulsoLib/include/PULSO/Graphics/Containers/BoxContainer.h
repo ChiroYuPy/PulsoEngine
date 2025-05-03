@@ -21,9 +21,13 @@ public:
 
     void updateLayout() override;
 
+    void setDirection(Direction direction);
+
+    void setSpacing(int newSpacing);
+
 private:
     Direction direction = Vertical;
-    int spacing = 10;
+    int spacing = 0;
 };
 
 

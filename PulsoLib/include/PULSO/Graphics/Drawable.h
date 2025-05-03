@@ -34,11 +34,13 @@ inline bool hasY(Axes axes) {
 class Drawable : public Transformable {
 public:
     Drawable();
-    virtual ~Drawable();
+    virtual ~Drawable() = default;
 
     virtual void setRenderer(Renderer* newRenderer);
 
     virtual void draw();
+
+    void debugDraw();
 
     void update(Time deltaTime) override;
 

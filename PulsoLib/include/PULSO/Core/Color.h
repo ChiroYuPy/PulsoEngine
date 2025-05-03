@@ -27,7 +27,36 @@ public:
     static const Color Yellow;
     static const Color Magenta;
     static const Color Cyan;
+    static const Color Purple;
+    static const Color Orange;
+    static const Color Pink;
+    static const Color Lime;
+    static const Color Teal;
+    static const Color Navy;
+    static const Color Olive;
+    static const Color Brown;
+    static const Color SkyBlue;
+    static const Color Gold;
+
     static const Color Transparent;
+    static const Color TransparentBlack;
+    static const Color TransparentWhite;
+    static const Color TransparentRed;
+    static const Color TransparentGreen;
+    static const Color TransparentBlue;
+    static const Color TransparentYellow;
+    static const Color TransparentMagenta;
+    static const Color TransparentCyan;
+    static const Color TransparentPurple;
+    static const Color TransparentOrange;
+    static const Color TransparentPink;
+    static const Color TransparentLime;
+    static const Color TransparentTeal;
+    static const Color TransparentNavy;
+    static const Color TransparentOlive;
+    static const Color TransparentBrown;
+    static const Color TransparentSkyBlue;
+    static const Color TransparentGold;
 
     std::uint8_t r{};
     std::uint8_t g{};
