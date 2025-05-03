@@ -24,10 +24,10 @@ public:
     void start();
 
 protected:
-    virtual void onInit() = 0;          // Before the first while
-    virtual void onFrameStart() = 0;    // Before events, update, render
-    virtual void onFrameEnd() = 0;      // After events, update, render
-    virtual void onCleanup() = 0;       // On the last while
+    virtual void onInit() {}          // Before the first while
+    virtual void onFrameStart() {}    // Before events, update, render
+    virtual void onFrameEnd() {}      // After events, update, render
+    virtual void onCleanup() {}       // On the last while
 
     GameContext ctx;
     SceneStack sceneStack;
