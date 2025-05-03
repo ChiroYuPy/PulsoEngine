@@ -18,7 +18,7 @@ public:
     void setFontSize(const unsigned int newFontSize);
     [[nodiscard]] unsigned int getFontSize() const;
 
-    void draw() override;
+    void onRender() override;
 
 private:
     unsigned int fontSize;

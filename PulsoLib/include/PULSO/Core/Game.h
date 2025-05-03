@@ -25,8 +25,8 @@ public:
 
 protected:
     virtual void onInit() {}          // Before the first while
-    virtual void onFrameStart() {}    // Before events, update, render
-    virtual void onFrameEnd() {}      // After events, update, render
+    virtual void onFrameStart() {}    // Before events, onUpdate, render
+    virtual void onFrameEnd() {}      // After events, onUpdate, render
     virtual void onCleanup() {}       // On the last while
 
     GameContext ctx;

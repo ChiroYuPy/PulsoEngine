@@ -12,23 +12,23 @@ void SceneStack::setGameContext(GameContext *gameContext) {
 void SceneStack::push(std::unique_ptr<Scene> scene) {
     if (!isEmpty()) {
         getCurrent()->onExit();
-        getCurrent()->root->clear();
+        getCurrent()->clear();
     }
     scenes.push(std::move(scene));
     getCurrent()->onEnter();
-    getCurrent()->root->setRenderer(ctx->renderer);
+    getCurrent()->setRenderer(ctx->renderer);
 }
 
 void SceneStack::pop() {
     if (isEmpty()) return;
 
     getCurrent()->onExit();
-    getCurrent()->root->clear();
+    getCurrent()->clear();
     scenes.pop();
 
     if (!isEmpty()) {
         getCurrent()->onEnter();
-        getCurrent()->root->setRenderer(ctx->renderer);
+        getCurrent()->setRenderer(ctx->renderer);
     }
 }
 
@@ -39,7 +39,7 @@ bool SceneStack::isEmpty() const {
 void SceneStack::clear() {
     while (!isEmpty()) {
         getCurrent()->onExit();
-        getCurrent()->root->clear();
+        getCurrent()->clear();
         scenes.pop();
     }
 }
@@ -55,19 +55,14 @@ Scene* SceneStack::getCurrent() {
 void SceneStack::onEvent(const Event &event) {
     if (isEmpty()) return;
     getCurrent()->onEvent(event);
-    getCurrent()->root->onEvent(event);
 }
 
 void SceneStack::onUpdate(const Time time) {
     if (isEmpty()) return;
     getCurrent()->onUpdate(time);
-    getCurrent()->updateRoot();
-    getCurrent()->root->update(time);
 }
 
 void SceneStack::onRender() {
     if (isEmpty()) return;
-    ctx->renderer->clear();
     getCurrent()->onRender();
-    getCurrent()->root->draw();
 }

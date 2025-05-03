@@ -8,7 +8,7 @@ void Transformable::addAnimation(std::unique_ptr<IAnimationTransform> animationT
     animationTransforms.push_back(std::move(animationTransform));
 }
 
-void Transformable::update(Time deltaTime) {
+void Transformable::onUpdate(Time deltaTime) {
     for (auto it = animationTransforms.begin(); it != animationTransforms.end();) {
         (*it)->update(deltaTime);
         if ((*it)->isFinished())

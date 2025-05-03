@@ -12,7 +12,7 @@ class Circle : public Shape {
 public:
     Circle(float radius);
 
-    void draw() override;
+    void onRender() override;
 
     float radius;
 };

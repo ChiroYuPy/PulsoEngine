@@ -6,7 +6,7 @@
 
 DebugContainer::DebugContainer() : color(0xBBBBBBFF) {}
 
-void DebugContainer::draw() {
+void DebugContainer::onRender() {
   sf::RectangleShape box;
   box.setSize({absoluteSize.x, absoluteSize.y});
   box.setPosition(absolutePosition.x, absolutePosition.y);
@@ -15,7 +15,7 @@ void DebugContainer::draw() {
   box.setRotation(rotation.getAngle());
 
   if (renderer) renderer->draw(box);
-  Container::draw();
+    Container::onRender();
 }
 
 void DebugContainer::setColor(Color newColor) {

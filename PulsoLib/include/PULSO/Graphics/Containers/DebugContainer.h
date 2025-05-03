@@ -13,7 +13,7 @@ class DebugContainer : public Container {
 public:
     DebugContainer();
 
-    void draw() override;
+    void onRender() override;
 
     void setColor(Color newColor);
     [[nodiscard]] Color getColor() const;

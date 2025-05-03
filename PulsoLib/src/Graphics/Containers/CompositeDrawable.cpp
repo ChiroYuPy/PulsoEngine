@@ -17,16 +17,16 @@ unsigned int CompositeDrawable::size() const {
     return children.size();
 }
 
-void CompositeDrawable::draw() {
-    Drawable::draw();
+void CompositeDrawable::onRender() {
+    Drawable::onRender();
     for (const auto& child : children) {
-        child->draw();
+        child->onRender();
     }
 }
 
-void CompositeDrawable::update(const Time deltaTime) {
-    Drawable::update(deltaTime);
-    for (const auto& child : children) child->update(deltaTime);
+void CompositeDrawable::onUpdate(Time deltaTime) {
+    Drawable::onUpdate(deltaTime);
+    for (const auto& child : children) child->onUpdate(deltaTime);
 }
 
 void CompositeDrawable::onEvent(const Event& event) {

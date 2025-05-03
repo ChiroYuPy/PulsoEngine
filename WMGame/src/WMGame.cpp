@@ -10,11 +10,11 @@ void WMGame::onInit() {
 }
 
 void WMGame::onFrameStart() {
-
+    ctx.renderer->clear();
 }
 
 void WMGame::onFrameEnd() {
-    std::cout << 1.f / deltaTime.asSeconds() << std::endl;
+    // std::cout << 1.f / deltaTime.asSeconds() << std::endl;
 }
 
 void WMGame::onCleanup() {

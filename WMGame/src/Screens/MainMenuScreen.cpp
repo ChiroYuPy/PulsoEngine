@@ -77,7 +77,7 @@ void MainMenuScreen::onEnter() {
     bottomBox->add(std::move(inner1));
     rootBox->add(std::move(bottomBox));
 
-    root->add(std::move(rootBox));
+    add(std::move(rootBox));
 
     sound = std::make_unique<Sound>("../WMGame/ressources/ui-pop-up-243471.mp3");
     sound->setVolume(1.f);
@@ -85,13 +85,13 @@ void MainMenuScreen::onEnter() {
     auto label1 = std::make_unique<Label>();
     label1->setText("Test Text");
     label1->setFontSize(32);
-    root->add(std::move(label1));
+    add(std::move(label1));
 
     auto button = std::make_unique<BeatmapButton>(Color::TransparentBlue);
     button->onClick = [this] { ctx->screenStack->push(std::make_unique<TestScreen>(ctx)); };
-    root->add(std::move(button));
+    add(std::move(button));
 
-    std::cout << "nb: " << root->size() << std::endl;
+    std::cout << "nb: " << size() << std::endl;
 }
 
 
@@ -100,14 +100,15 @@ void MainMenuScreen::onExit() {
 }
 
 void MainMenuScreen::onUpdate(Time deltaTime) {
-
+    Scene::onUpdate(deltaTime);
 }
 
 void MainMenuScreen::onRender() {
-
+    Container::onRender();
 }
 
 void MainMenuScreen::onEvent(const Event& event) {
+    Container::onEvent(event);
     if (event.type == Event::Type::Closed) ctx->renderer->quitWindow();
     else if (event.type == Event::Type::KeyDown) {
         if (event.key.code == Event::Key::Escape) ctx->renderer->quitWindow();

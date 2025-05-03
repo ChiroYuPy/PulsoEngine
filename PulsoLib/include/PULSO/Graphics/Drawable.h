@@ -38,11 +38,11 @@ public:
 
     virtual void setRenderer(Renderer* newRenderer);
 
-    virtual void draw();
+    virtual void onRender();
 
     void debugDraw();
 
-    void update(Time deltaTime) override;
+    void onUpdate(Time deltaTime) override;
 
     virtual void onEvent(const Event& event);
 

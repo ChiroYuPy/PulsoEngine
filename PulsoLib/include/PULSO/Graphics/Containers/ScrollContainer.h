@@ -36,7 +36,7 @@ private:
 
   void onEvent(const Event& event) override;
 
-  void update(Time deltaTime) override;
+  void onUpdate(Time deltaTime) override;
 };
 
 

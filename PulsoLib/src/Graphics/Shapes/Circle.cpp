@@ -8,8 +8,8 @@ Circle::Circle(const float radius) : radius(radius) {
     relativeSize = {radius * 2.f, radius * 2.f};
 }
 
-void Circle::draw() {
-    Drawable::draw();
+void Circle::onRender() {
+    Drawable::onRender();
     sf::CircleShape circle;
     circle.setRadius(radius);
     circle.setPosition(absolutePosition.x, absolutePosition.y);

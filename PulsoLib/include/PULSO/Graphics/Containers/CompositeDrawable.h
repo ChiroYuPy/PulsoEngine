@@ -17,11 +17,11 @@ public:
 
     void clear();
 
-    unsigned int size() const;
+    [[nodiscard]] unsigned int size() const;
 
-    void draw() override;
+    void onRender() override;
 
-    void update(Time deltaTime) override;
+    void onUpdate(Time deltaTime) override;
 
     void onEvent(const Event& event) override;
 

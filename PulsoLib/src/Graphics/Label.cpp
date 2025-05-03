@@ -17,8 +17,8 @@ const std::string &Label::getText() const {
     return text;
 }
 
-void Label::draw() {
-    Drawable::draw();
+void Label::onRender() {
+    Drawable::onRender();
     sf::Text textSprite;
     textSprite.setString(text);
     textSprite.setCharacterSize(fontSize);

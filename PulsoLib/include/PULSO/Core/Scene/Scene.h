@@ -14,21 +14,14 @@
 
 class GameContext;
 
-class Scene {
+class Scene : public Container {
 public:
     explicit Scene(GameContext* context);
-    virtual ~Scene() = default;
 
     virtual void onEnter() {}
     virtual void onExit() {}
 
-    virtual void onRender() = 0;
-    virtual void onUpdate(Time deltaTime) = 0;
-    virtual void onEvent(const Event& event) = 0;
-
-    void updateRoot() const;
-
-    std::unique_ptr<DebugContainer> root;
+    virtual void onUpdate(Time deltaTime) override;
 
 protected:
     GameContext* ctx = nullptr;

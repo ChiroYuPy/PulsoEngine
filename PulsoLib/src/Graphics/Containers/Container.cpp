@@ -32,8 +32,8 @@ void Container::updateLayout() {
     }
 }
 
-void Container::update(const Time update) {
-    CompositeDrawable::update(update);
+void Container::onUpdate(Time update) {
+    CompositeDrawable::onUpdate(update);
     updateLayout();
 }
 

@@ -12,7 +12,7 @@ class Text : public Shape {
 public:
     explicit Text(std::string& text);
 
-    void draw() override;
+    void onRender() override;
 
     std::string text;
 };

@@ -13,8 +13,8 @@ Vector2 ScrollContainer::getScrollExtent() const {
   return {availableContent.x - scrollContainerSize.x, availableContent.y - scrollContainerSize.y};
 }
 
-void ScrollContainer::update(Time deltaTime) {
-    Container::update(deltaTime);
+void ScrollContainer::onUpdate(Time deltaTime) {
+    Container::onUpdate(deltaTime);
     distanceDecay = distanceDecayScroll;
     currentPosition += (targetPosition - currentPosition) * distanceDecay * deltaTime.asSeconds();
 }

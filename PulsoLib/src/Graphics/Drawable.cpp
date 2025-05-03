@@ -14,7 +14,7 @@ void Drawable::setRenderer(Renderer* newRenderer) {
     renderer = newRenderer;
 }
 
-void Drawable::draw() {
+void Drawable::onRender() {
     debugDraw();
 }
 
@@ -30,8 +30,8 @@ void Drawable::debugDraw() {
     if (renderer) renderer->draw(box);
 }
 
-void Drawable::update(const Time deltaTime) {
-    Transformable::update(deltaTime);
+void Drawable::onUpdate(Time deltaTime) {
+    Transformable::onUpdate(deltaTime);
     updateTransform();
 }
 

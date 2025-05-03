@@ -12,7 +12,7 @@ class Container : public CompositeDrawable {
 public:
     Container();
 
-    void update(Time update) override;
+    void onUpdate(Time update) override;
 
     virtual void updateLayout();
 };

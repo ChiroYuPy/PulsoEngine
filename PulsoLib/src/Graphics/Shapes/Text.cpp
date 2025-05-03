@@ -7,6 +7,6 @@
 Text::Text(std::string& text) : text(text) {
 }
 
-void Text::draw() {
-    Drawable::draw();
+void Text::onRender() {
+    Drawable::onRender();
 }

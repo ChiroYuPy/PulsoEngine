@@ -9,16 +9,15 @@ Scene::Scene(GameContext *context) {
     ctx = context;
     const Vector2 windowSize = ctx->renderer->getWindowSize();
 
-    root = std::make_unique<DebugContainer>();
-    root->setSize({windowSize.x, windowSize.y});
-    root->setPosition({windowSize.x / 2.f, windowSize.y / 2.f});
-    root->setOrigin(Anchor::Center);
-    root->setColor(Color(0x202020FF));
+    setSize({windowSize.x, windowSize.y});
+    setPosition({windowSize.x / 2.f, windowSize.y / 2.f});
+    setOrigin(Anchor::Center);
 }
 
-void Scene::updateRoot() const {
+void Scene::onUpdate(Time deltaTime) {
+    Container::onUpdate(deltaTime);
     const Vector2 windowSize = ctx->renderer->getWindowSize();
 
-    root->setSize({windowSize.x, windowSize.y});
-    root->setPosition({windowSize.x / 2.f, windowSize.y / 2.f});
+    setSize({windowSize.x, windowSize.y});
+    setPosition({windowSize.x / 2.f, windowSize.y / 2.f});
 }

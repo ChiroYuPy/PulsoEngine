@@ -12,8 +12,8 @@ void Box::setSize(const Vector2 &newSize) {
     Drawable::setSize(newSize);
 }
 
-void Box::draw() {
-    Drawable::draw();
+void Box::onRender() {
+    Drawable::onRender();
     sf::RectangleShape box;
     box.setSize({absoluteSize.x, absoluteSize.y});
     box.setPosition(absolutePosition.x, absolutePosition.y);

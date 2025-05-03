@@ -14,7 +14,7 @@ public:
 
     void setSize(const Vector2& newSize) override;
 
-    void draw() override;
+    void onRender() override;
 };
 
 

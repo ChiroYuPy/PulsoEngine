@@ -15,7 +15,7 @@ class Transformable {
 public:
     void addAnimation(std::unique_ptr<IAnimationTransform> animationTransform) noexcept;
 
-    virtual void update(Time deltaTime);
+    virtual void onUpdate(Time deltaTime);
 
 private:
     std::vector<std::unique_ptr<IAnimationTransform>> animationTransforms;
